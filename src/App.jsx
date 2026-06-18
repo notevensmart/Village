@@ -8,7 +8,9 @@ import {
   HeartHandshake,
   Mail,
   Menu,
+  MessageCircle,
   ShieldCheck,
+  Sparkles,
   UsersRound,
   X,
 } from "lucide-react";
@@ -34,21 +36,42 @@ const pageTitles = {
   disclaimer: "Website Disclaimer | Village Clinical Consultancy",
 };
 
-const differentiators = [
+const assurancePanels = [
   {
-    title: "Multidisciplinary insight",
-    text: "A village model brings together complementary professional lenses so families and referrers receive balanced, thoughtful assessment.",
+    audience: "For children",
+    title: "A process designed around how children communicate.",
+    text: "Assessment is paced to help children feel safe enough to participate, with observations considered in context rather than treated as isolated moments.",
+    proof: "Child-centred practice",
     icon: UsersRound,
   },
   {
-    title: "Dyadic assessment format",
-    text: "Reports are prepared with more than one professional perspective to support quality, reduce bias, and strengthen recommendations.",
-    icon: ShieldCheck,
+    audience: "For parents",
+    title: "Clear expectations before families step into the room.",
+    text: "Parents know what is being assessed, what information may be needed, and how flexible appointment options can support family schedules.",
+    proof: "Transparent scope and timing",
+    icon: MessageCircle,
   },
   {
-    title: "Family-aware scheduling",
-    text: "After-hours and weekend options are available where appropriate, with parents and children considered in the planning process.",
-    icon: CalendarDays,
+    audience: "For lawyers",
+    title: "Two professional lenses strengthen report quality.",
+    text: "The dyadic model adds reflection, quality control, and bias-aware review before recommendations are finalised.",
+    proof: "Multidisciplinary dyadic review",
+    icon: ShieldCheck,
+  },
+];
+
+const heroHighlights = [
+  {
+    label: "Dyadic",
+    text: "Two-practitioner review",
+  },
+  {
+    label: "Flexible",
+    text: "After-hours options",
+  },
+  {
+    label: "Clear",
+    text: "Scope and timing upfront",
   },
 ];
 
@@ -82,23 +105,31 @@ const services = [
 const processSteps = [
   {
     label: "1",
+    eyebrow: "Start",
     title: "Enquiry and triage",
-    text: "We confirm the referral question, parties involved, urgency, and whether the matter is appropriate for Village.",
+    text: "We clarify who is involved, what question needs answering, and whether Village is the right professional fit before anything is booked.",
+    outcome: "You leave with a clear next step.",
   },
   {
     label: "2",
+    eyebrow: "Plan",
     title: "Scope, fees, and scheduling",
-    text: "The proposed process, expected appointments, indicative timing, and fees are confirmed in writing before work begins.",
+    text: "Appointments, document needs, indicative timing, flexible availability, and fees are set out in writing before work begins.",
+    outcome: "The process is mapped before the family attends.",
   },
   {
     label: "3",
+    eyebrow: "Assess",
     title: "Assessment appointments",
-    text: "Parents, children, and relevant stakeholders are seen according to the agreed scope and child-focused process.",
+    text: "Parents, children, and relevant stakeholders are seen according to the agreed scope, with child participation handled carefully.",
+    outcome: "Information is gathered through more than one lens.",
   },
   {
     label: "4",
+    eyebrow: "Resolve",
     title: "Dyadic review and report",
-    text: "Findings are reviewed through the dyadic model before the final report or consultation outcome is delivered.",
+    text: "Findings are tested through the dyadic model before the final report or consultation outcome is delivered.",
+    outcome: "Recommendations are clearer, balanced, and usable.",
   },
 ];
 
@@ -282,10 +313,10 @@ function HomePage() {
     <>
       <section className="hero" aria-labelledby="home-heading">
         <div className="hero-copy page-shell">
-          <p className="eyebrow">Family-centred assessment and report services</p>
+          <p className="eyebrow">Child-centred family assessment and report services</p>
           <h1 id="home-heading">Village Clinical Consultancy</h1>
           <p className="hero-text">
-            Multidisciplinary, dyadic assessments for families, lawyers, and referral partners who need clarity, care, and professional independence.
+            Calm, multidisciplinary assessments for families, lawyers, and referral partners who need child-focused clarity without losing sight of the whole family system.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#contact">
@@ -296,21 +327,29 @@ function HomePage() {
               View services
             </a>
           </div>
+          <div className="hero-highlights" aria-label="Village service highlights">
+            {heroHighlights.map((item) => (
+              <div key={item.label}>
+                <span>{item.label}</span>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section band-light" aria-labelledby="unique-heading">
         <div className="page-shell">
           <div className="section-heading narrow">
-            <p className="eyebrow">What makes us different</p>
-            <h2 id="unique-heading">A calm process with multiple professional lenses.</h2>
+            <p className="eyebrow">What a client should feel quickly</p>
+            <h2 id="unique-heading">This is not a one-size-fits-all assessment.</h2>
             <p>
-              Village is built around the idea that complex family matters benefit from collaboration, clear expectations, and careful professional judgement.
+              As a prospective client, I would want to know three things immediately: will my child be handled carefully, will the process be clear, and will the report be balanced enough to be useful.
             </p>
           </div>
-          <div className="feature-grid">
-            {differentiators.map((item) => (
-              <FeatureCard key={item.title} {...item} />
+          <div className="assurance-grid">
+            {assurancePanels.map((item) => (
+              <AssurancePanel key={item.audience} {...item} />
             ))}
           </div>
         </div>
@@ -503,14 +542,23 @@ function ServicesPage() {
         <div className="page-shell">
           <div className="section-heading">
             <p className="eyebrow">Process</p>
-            <h2 id="process-heading">A clear pathway from enquiry to outcome.</h2>
+            <h2 id="process-heading">A clear pathway, stacked in the order families experience it.</h2>
           </div>
-          <div className="timeline">
+          <div className="process-stack" aria-label="Village assessment process">
             {processSteps.map((step) => (
-              <article className="timeline-step" key={step.label}>
-                <span>{step.label}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
+              <article className="process-step" key={step.label}>
+                <div className="process-marker">
+                  <span>{step.label}</span>
+                </div>
+                <div className="process-card">
+                  <p className="process-eyebrow">{step.eyebrow}</p>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                  <div className="process-outcome">
+                    <Sparkles aria-hidden="true" />
+                    <span>{step.outcome}</span>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
@@ -670,6 +718,23 @@ function PageHero({ eyebrow, title, text }) {
         <p>{text}</p>
       </div>
     </section>
+  );
+}
+
+function AssurancePanel({ icon: Icon, audience, title, text, proof }) {
+  return (
+    <article className="assurance-panel">
+      <div className="assurance-topline">
+        <span>{audience}</span>
+        <Icon aria-hidden="true" />
+      </div>
+      <h3>{title}</h3>
+      <p>{text}</p>
+      <div className="proof-line">
+        <CheckCircle2 aria-hidden="true" />
+        <span>{proof}</span>
+      </div>
+    </article>
   );
 }
 
