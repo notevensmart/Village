@@ -286,10 +286,10 @@ function Header({ activePage }) {
               {item.label}
             </a>
           ))}
-          <a className={`nav-cta ${activePage === "contact" ? "active" : ""}`} href="#contact" aria-current={activePage === "contact" ? "page" : undefined}>
-            Enquire
-          </a>
         </nav>
+        <a className={`nav-cta header-cta ${activePage === "contact" ? "active" : ""}`} href="#contact" aria-current={activePage === "contact" ? "page" : undefined}>
+          Enquire
+        </a>
       </div>
     </header>
   );
