@@ -8,10 +8,8 @@ import {
   HeartHandshake,
   Mail,
   Menu,
-  MessageCircle,
   ShieldCheck,
   Sparkles,
-  UsersRound,
   X,
 } from "lucide-react";
 
@@ -21,7 +19,6 @@ const navItems = [
   { id: "team", label: "Our team" },
   { id: "services", label: "Services" },
   { id: "faq", label: "FAQ" },
-  { id: "contact", label: "Contact" },
 ];
 
 const pageTitles = {
@@ -38,40 +35,40 @@ const pageTitles = {
 
 const assurancePanels = [
   {
-    audience: "For children",
-    title: "A process designed around how children communicate.",
-    text: "Assessment is paced to help children feel safe enough to participate, with observations considered in context rather than treated as isolated moments.",
-    proof: "Child-centred practice",
-    icon: UsersRound,
+    audience: "Care",
+    title: "Care and support for the child",
+    text: "Children are supported through a calm, paced assessment process that respects how they communicate and what helps them feel safe enough to participate.",
+    proof: "Child-centred participation, not pressure",
+    icon: HeartHandshake,
   },
   {
-    audience: "For parents",
-    title: "Clear expectations before families step into the room.",
-    text: "Parents know what is being assessed, what information may be needed, and how flexible appointment options can support family schedules.",
-    proof: "Transparent scope and timing",
-    icon: MessageCircle,
+    audience: "Clarity",
+    title: "A clear and transparent process",
+    text: "Families, lawyers, and referrers know what is being assessed, what information is needed, what fees apply, and how timing will be managed.",
+    proof: "Scope, fees, and timing set out upfront",
+    icon: FileText,
   },
   {
-    audience: "For lawyers",
-    title: "Two professional lenses strengthen report quality.",
-    text: "The dyadic model adds reflection, quality control, and bias-aware review before recommendations are finalised.",
-    proof: "Multidisciplinary dyadic review",
+    audience: "Balance",
+    title: "Balanced, practical, useful outcomes",
+    text: "Findings are tested through a dyadic, multidisciplinary lens so reports are careful, bias-aware, and focused on decisions people can actually use.",
+    proof: "Two professional lenses strengthen report quality",
     icon: ShieldCheck,
   },
 ];
 
 const heroHighlights = [
   {
-    label: "Dyadic",
-    text: "Two-practitioner review",
+    label: "For families",
+    text: "Careful child-inclusive participation",
   },
   {
-    label: "Flexible",
-    text: "After-hours options",
+    label: "For lawyers",
+    text: "Report-ready scope and communication",
   },
   {
-    label: "Clear",
-    text: "Scope and timing upfront",
+    label: "For referrers",
+    text: "Multidisciplinary clinical perspective",
   },
 ];
 
@@ -302,6 +299,9 @@ function Header({ activePage, menuOpen, setMenuOpen }) {
               {item.label}
             </a>
           ))}
+          <a className={`nav-cta ${activePage === "contact" ? "active" : ""}`} href="#contact" aria-current={activePage === "contact" ? "page" : undefined}>
+            Enquire
+          </a>
         </nav>
       </div>
     </header>
@@ -312,39 +312,56 @@ function HomePage() {
   return (
     <>
       <section className="hero" aria-labelledby="home-heading">
-        <div className="hero-copy page-shell">
-          <p className="eyebrow">Child-centred family assessment and report services</p>
-          <h1 id="home-heading">Village Clinical Consultancy</h1>
-          <p className="hero-text">
-            Calm, multidisciplinary assessments for families, lawyers, and referral partners who need child-focused clarity without losing sight of the whole family system.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#contact">
-              Send an enquiry
-              <ArrowRight aria-hidden="true" />
-            </a>
-            <a className="button secondary" href="#services">
-              View services
-            </a>
+        <div className="page-shell hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow">Child-centred family assessment and report services</p>
+            <h1 id="home-heading">Professional family assessments with care, clarity, and balance.</h1>
+            <p className="hero-text">
+              Village Clinical Consultancy supports families, lawyers, and referral partners with calm multidisciplinary assessments, clear process design, and practical child-focused recommendations.
+            </p>
+            <div className="hero-actions">
+              <a className="button primary" href="#contact">
+                Send an enquiry
+                <ArrowRight aria-hidden="true" />
+              </a>
+              <a className="button secondary" href="#services">
+                View services
+              </a>
+            </div>
+            <div className="hero-highlights" aria-label="Village service highlights">
+              {heroHighlights.map((item) => (
+                <div key={item.label}>
+                  <span>{item.label}</span>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="hero-highlights" aria-label="Village service highlights">
-            {heroHighlights.map((item) => (
-              <div key={item.label}>
-                <span>{item.label}</span>
-                <p>{item.text}</p>
-              </div>
-            ))}
+
+          <div className="hero-card" aria-label="Village assessment brand and child-centred care">
+            <div className="hero-card-brand">
+              <img src="/village-logo-cropped.png" alt="Village Clinical Consultancy logo" />
+              <p>Multidisciplinary assessment and report services for complex family pathways.</p>
+            </div>
+            <figure className="hero-image-wrap">
+              <img src="/village-hero-child.png" alt="Child drawing during a supportive family assessment appointment" />
+            </figure>
+            <div className="hero-card-footer" aria-label="Core Village trust signals">
+              <span>Dyadic review</span>
+              <span>Flexible appointments</span>
+              <span>Clear expectations</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section band-light" aria-labelledby="unique-heading">
+      <section className="section trust-section" aria-labelledby="unique-heading">
         <div className="page-shell">
-          <div className="section-heading narrow">
-            <p className="eyebrow">What a client should feel quickly</p>
-            <h2 id="unique-heading">This is not a one-size-fits-all assessment.</h2>
+          <div className="section-heading trust-heading">
+            <p className="eyebrow">Why clients trust Village</p>
+            <h2 id="unique-heading">The essentials should be clear before a family ever attends.</h2>
             <p>
-              As a prospective client, I would want to know three things immediately: will my child be handled carefully, will the process be clear, and will the report be balanced enough to be useful.
+              These are the promises that shape the assessment experience for children, parents, lawyers, and referral partners.
             </p>
           </div>
           <div className="assurance-grid">

@@ -1,24 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@300;400;700;900&display=swap");
 
 :root {
-  --olive-900: #17213a;
-  --olive-800: #25304f;
-  --olive-700: #394461;
-  --olive-100: #eceff5;
-  --olive-50: #f6f7fa;
-  --clay-700: #9a4e31;
-  --clay-600: #b6623c;
-  --clay-100: #f6e4d8;
-  --cream: #fbf7ef;
-  --linen: #f0ebe3;
-  --paper: #fffdf8;
-  --ink: #1f2430;
-  --muted: #5b6270;
-  --border: #ddd4c5;
-  --bluewash: #e9eef4;
-  --bronze: #b68658;
-  --shadow: 0 22px 70px rgba(23, 33, 58, 0.12);
-  --header-height: 84px;
+  --olive-900: #17331f;
+  --olive-800: #224834;
+  --olive-700: #3f614d;
+  --olive-100: #e5eee8;
+  --olive-50: #f6faf7;
+  --clay-700: #873f28;
+  --clay-600: #a75834;
+  --clay-100: #f4ddd0;
+  --cream: #f7faf8;
+  --linen: #edf3ef;
+  --paper: #ffffff;
+  --ink: #17212b;
+  --muted: #4f5f6d;
+  --border: #d7e0db;
+  --bluewash: #eef3f7;
+  --bronze: #af7650;
+  --shadow: 0 22px 58px rgba(23, 51, 31, 0.12);
+  --header-height: 108px;
   font-family: "Lato", Arial, sans-serif;
   color: var(--ink);
   background: var(--cream);
@@ -35,6 +35,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background: var(--cream);
   color: var(--ink);
   line-height: 1.6;
@@ -86,11 +87,11 @@ h3 {
 
 h1 {
   max-width: 820px;
-  font-size: clamp(3rem, 6.5vw, 5.35rem);
+  font-size: 4.55rem;
 }
 
 h2 {
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-size: 3.65rem;
 }
 
 h3 {
@@ -171,6 +172,7 @@ svg {
 
 .brand-link:focus-visible,
 .nav-list a:focus-visible,
+.nav-cta:focus-visible,
 .button:focus-visible,
 .icon-button:focus-visible,
 .footer-grid a:focus-visible,
@@ -184,8 +186,8 @@ textarea:focus-visible {
 }
 
 .brand-link img {
-  width: 150px;
-  height: 58px;
+  width: 102px;
+  height: auto;
   object-fit: contain;
   object-position: left center;
   mix-blend-mode: multiply;
@@ -213,6 +215,20 @@ textarea:focus-visible {
   color: var(--olive-800);
 }
 
+.nav-list .nav-cta {
+  border-radius: 6px;
+  background: var(--olive-900);
+  color: #fff;
+  margin-left: 0.35rem;
+  padding-inline: 1rem;
+}
+
+.nav-list .nav-cta:hover,
+.nav-list .nav-cta.active {
+  background: var(--clay-600);
+  color: #fff;
+}
+
 .icon-button {
   display: inline-flex;
   align-items: center;
@@ -236,48 +252,56 @@ textarea:focus-visible {
 
 .hero {
   display: flex;
-  align-items: flex-end;
-  min-height: clamp(500px, calc(74svh - var(--header-height)), 590px);
-  padding: clamp(3.2rem, 7vw, 5.4rem) 0 2.35rem;
-  background:
-    linear-gradient(90deg, rgba(251, 247, 239, 0.98) 0%, rgba(251, 247, 239, 0.9) 36%, rgba(251, 247, 239, 0.34) 67%, rgba(251, 247, 239, 0.06) 100%),
-    linear-gradient(0deg, rgba(23, 33, 58, 0.34), rgba(23, 33, 58, 0.02)),
-    url("/village-hero-child.png") center right / cover no-repeat;
+  align-items: center;
+  min-height: min(760px, calc(92svh - var(--header-height)));
+  border-bottom: 1px solid var(--border);
+  background: var(--olive-50);
+  padding: 3.6rem 0 3.8rem;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(430px, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.8rem);
+  min-width: 0;
 }
 
 .hero-copy {
   display: grid;
-  gap: 0.82rem;
+  gap: 1rem;
+  max-width: 700px;
+  min-width: 0;
 }
 
 .eyebrow {
   color: var(--clay-700);
   font-size: 0.78rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .hero-text {
   max-width: 640px;
-  color: #343a46;
-  font-size: clamp(1.04rem, 1.8vw, 1.28rem);
+  color: #334155;
+  font-size: 1.2rem;
+  overflow-wrap: break-word;
 }
 
 .hero-highlights {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 690px;
-  gap: 0.7rem;
-  padding-top: 0.15rem;
+  max-width: 720px;
+  gap: 0.8rem;
+  padding-top: 0.2rem;
 }
 
 .hero-highlights div {
-  border: 1px solid rgba(221, 212, 197, 0.82);
+  border: 1px solid rgba(215, 224, 219, 0.92);
   border-radius: 8px;
-  background: rgba(255, 253, 248, 0.74);
-  padding: 0.68rem 0.78rem;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.84);
+  padding: 0.8rem 0.86rem;
 }
 
 .hero-highlights span {
@@ -285,7 +309,7 @@ textarea:focus-visible {
   color: var(--clay-700);
   font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -295,6 +319,82 @@ textarea:focus-visible {
   font-size: 0.86rem;
   font-weight: 900;
   line-height: 1.35;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-areas:
+    "brand image"
+    "footer footer";
+  grid-template-columns: minmax(170px, 0.55fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(23, 51, 31, 0.16);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 28px 70px rgba(23, 51, 31, 0.16);
+  min-width: 0;
+}
+
+.hero-card-brand {
+  grid-area: brand;
+  display: grid;
+  align-content: center;
+  gap: 1.2rem;
+  border-right: 1px solid var(--border);
+  background: #fff;
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.hero-card-brand img {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.hero-card-brand p {
+  color: var(--olive-900);
+  font-size: 0.96rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.hero-image-wrap {
+  grid-area: image;
+  min-height: 430px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-card-footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: var(--olive-900);
+  color: #fff;
+}
+
+.hero-card-footer span {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.hero-card-footer span:last-child {
+  border-right: 0;
 }
 
 .hero-actions,
@@ -364,7 +464,7 @@ textarea:focus-visible {
 }
 
 .hero + .section {
-  padding-top: 1.35rem;
+  padding-top: 4.2rem;
 }
 
 .band-light {
@@ -380,6 +480,7 @@ textarea:focus-visible {
   max-width: 840px;
   margin: 0 auto 2.2rem;
   gap: 0.75rem;
+  min-width: 0;
   text-align: center;
 }
 
@@ -392,6 +493,19 @@ textarea:focus-visible {
   text-align: left;
 }
 
+.trust-section {
+  background: var(--paper);
+}
+
+.trust-heading {
+  max-width: 920px;
+  margin-bottom: 2.6rem;
+}
+
+.trust-heading h2 {
+  font-size: 3.15rem;
+}
+
 .split-section {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
@@ -402,6 +516,7 @@ textarea:focus-visible {
 .text-stack {
   display: grid;
   gap: 1.2rem;
+  min-width: 0;
 }
 
 .check-list {
@@ -480,18 +595,19 @@ textarea:focus-visible {
 }
 
 .assurance-grid {
-  gap: clamp(0.9rem, 2vw, 1.2rem);
+  gap: 1.15rem;
 }
 
 .assurance-panel {
   position: relative;
   display: grid;
-  min-height: 330px;
+  min-height: 370px;
   align-content: space-between;
-  gap: 1.2rem;
+  gap: 1.35rem;
   overflow: hidden;
-  padding: clamp(1.25rem, 3vw, 1.9rem);
-  box-shadow: 0 24px 64px rgba(23, 33, 58, 0.1);
+  border-color: rgba(23, 51, 31, 0.15);
+  padding: 2rem;
+  box-shadow: 0 24px 58px rgba(23, 51, 31, 0.1);
 }
 
 .assurance-panel::before {
@@ -499,7 +615,7 @@ textarea:focus-visible {
   position: absolute;
   inset: 0 0 auto 0;
   height: 7px;
-  background: linear-gradient(90deg, var(--clay-600), var(--bronze), #66728a);
+  background: linear-gradient(90deg, var(--clay-600), var(--bronze), var(--olive-700));
 }
 
 .assurance-topline {
@@ -514,18 +630,26 @@ textarea:focus-visible {
   color: var(--clay-700);
   font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .assurance-topline svg {
-  width: 28px;
-  height: 28px;
-  color: #66728a;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--olive-100);
+  color: var(--olive-800);
+  padding: 0.6rem;
 }
 
 .assurance-panel h3 {
-  font-size: clamp(1.65rem, 2.3vw, 2.25rem);
+  font-size: 2.2rem;
+}
+
+.assurance-panel p {
+  color: #475569;
+  font-size: 1.02rem;
 }
 
 .proof-line,
@@ -594,13 +718,13 @@ textarea:focus-visible {
 
 .page-hero h1 {
   max-width: 940px;
-  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-size: 4.7rem;
 }
 
 .page-hero p:not(.eyebrow) {
   max-width: 760px;
   color: #41473a;
-  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  font-size: 1.18rem;
 }
 
 .value-item {
@@ -652,7 +776,7 @@ textarea:focus-visible {
   color: var(--clay-700);
   font-size: 0.8rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -736,7 +860,7 @@ textarea:focus-visible {
 }
 
 .process-card h3 {
-  font-size: clamp(1.55rem, 2.2vw, 2rem);
+  font-size: 1.9rem;
 }
 
 .process-outcome {
@@ -809,7 +933,7 @@ textarea:focus-visible {
 
 .legal-shell > h2 {
   margin-bottom: 0.5rem;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: 2.8rem;
 }
 
 .legal-block {
@@ -916,8 +1040,8 @@ textarea:focus-visible {
 }
 
 .footer-grid img {
-  width: 160px;
-  height: 64px;
+  width: 132px;
+  height: auto;
   object-fit: contain;
   object-position: left center;
   mix-blend-mode: multiply;
@@ -928,7 +1052,7 @@ textarea:focus-visible {
   font-family: "Lato", Arial, sans-serif;
   font-size: 0.88rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -960,6 +1084,9 @@ textarea:focus-visible {
 @media (max-width: 980px) {
   .nav-toggle {
     display: inline-flex;
+    border-color: var(--olive-900);
+    background: var(--olive-900);
+    color: #fff;
   }
 
   .nav-list {
@@ -986,11 +1113,25 @@ textarea:focus-visible {
     padding: 0.82rem 0.9rem;
   }
 
+  .nav-list .nav-cta {
+    margin-left: 0;
+  }
+
   .hero {
-    min-height: 650px;
-    background:
-      linear-gradient(180deg, rgba(251, 247, 239, 0.97), rgba(251, 247, 239, 0.78) 58%, rgba(23, 33, 58, 0.14)),
-      url("/village-hero-child.png") center / cover no-repeat;
+    min-height: auto;
+    padding: 3.2rem 0 3.6rem;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    max-width: 760px;
+  }
+
+  .hero-image-wrap {
+    min-height: 360px;
   }
 
   .split-section,
@@ -1020,7 +1161,7 @@ textarea:focus-visible {
 
 @media (max-width: 640px) {
   :root {
-    --header-height: 76px;
+    --header-height: 88px;
   }
 
   .page-shell {
@@ -1032,18 +1173,22 @@ textarea:focus-visible {
   }
 
   .brand-link img {
-    width: 128px;
-    height: 52px;
+    width: 78px;
+    height: auto;
   }
 
   .hero {
-    align-items: flex-end;
-    min-height: calc(82svh - var(--header-height));
-    padding: 4rem 0 3rem;
+    padding: 2.6rem 0 3rem;
   }
 
   h1 {
-    font-size: clamp(3rem, 16vw, 4.6rem);
+    font-size: 2.95rem;
+  }
+
+  h2,
+  .trust-heading h2,
+  .page-hero h1 {
+    font-size: 2.55rem;
   }
 
   .hero-text {
@@ -1072,21 +1217,66 @@ textarea:focus-visible {
   }
 
   .hero-highlights {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.45rem;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
   }
 
   .hero-highlights div {
-    padding: 0.5rem 0.48rem;
+    padding: 0.72rem 0.8rem;
   }
 
   .hero-highlights span {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .hero-highlights p {
-    font-size: 0.7rem;
-    line-height: 1.25;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .hero-card {
+    grid-template-areas:
+      "brand"
+      "image"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card-brand {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-card-brand img {
+    width: 204px;
+  }
+
+  .hero-image-wrap {
+    min-height: 265px;
+  }
+
+  .hero-card-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card-footer span {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0.75rem 0.95rem;
+  }
+
+  .hero-card-footer span:last-child {
+    border-bottom: 0;
+  }
+
+  .assurance-panel {
+    min-height: auto;
+    padding: 1.45rem;
+  }
+
+  .assurance-panel h3 {
+    font-size: 1.95rem;
   }
 
   .process-step {
