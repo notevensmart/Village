@@ -273,7 +273,7 @@ function Header({ activePage }) {
     <header className="site-header">
       <div className="header-inner">
         <a className="brand-link" href="#home" aria-label="Village Clinical Consultancy home" title="Village Clinical Consultancy">
-          <img src="/village-logo-cropped.png" alt="Village Clinical Consultancy logo" draggable="false" />
+          <LogoLockup />
         </a>
         <nav className="nav-list" aria-label="Primary navigation">
           {navItems.map((item) => (
@@ -292,6 +292,15 @@ function Header({ activePage }) {
         </a>
       </div>
     </header>
+  );
+}
+
+function LogoLockup() {
+  return (
+    <span className="logo-lockup" aria-label="Village Clinical Consultancy">
+      <img src="/village-logo-wordmark.png" alt="" draggable="false" />
+      <span className="logo-tagline">clinical consultancy</span>
+    </span>
   );
 }
 
@@ -327,7 +336,7 @@ function HomePage() {
 
           <div className="hero-card" aria-label="Village assessment brand and child-centred care">
             <div className="hero-card-brand" title="Village Clinical Consultancy">
-              <img src="/village-logo-cropped.png" alt="Village Clinical Consultancy logo" draggable="false" />
+              <LogoLockup />
               <p>Multidisciplinary assessment and report services for complex family pathways.</p>
             </div>
             <figure className="hero-image-wrap">
@@ -807,7 +816,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="page-shell footer-grid">
         <div>
-          <img src="/village-logo-cropped.png" alt="Village Clinical Consultancy logo" draggable="false" />
+          <LogoLockup />
           <p>
             Multidisciplinary family assessment and report services for families, lawyers, and professional referrers.
           </p>
