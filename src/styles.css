@@ -1,23 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@300;400;700;900&display=swap");
 
 :root {
-  --olive-900: #17331f;
-  --olive-800: #224834;
-  --olive-700: #3f614d;
-  --olive-100: #e5eee8;
-  --olive-50: #f6faf7;
-  --clay-700: #873f28;
-  --clay-600: #a75834;
-  --clay-100: #f4ddd0;
-  --cream: #f7faf8;
-  --linen: #edf3ef;
+  --navy-900: #14213d;
+  --navy-800: #1f2a44;
+  --navy-700: #4d5873;
+  --navy-100: #e7ecf4;
+  --navy-50: #f8fafc;
+  --clay-700: #8f3f1f;
+  --clay-600: #b45a2c;
+  --clay-100: #f4ddce;
+  --cream: #fbf8f3;
+  --linen: #f1ede7;
   --paper: #ffffff;
   --ink: #17212b;
-  --muted: #4f5f6d;
-  --border: #d7e0db;
-  --bluewash: #eef3f7;
-  --bronze: #af7650;
-  --shadow: 0 22px 58px rgba(23, 51, 31, 0.12);
+  --muted: #526071;
+  --border: #d9dee8;
+  --bluewash: #edf2f7;
+  --bronze: #a9794f;
+  --shadow: 0 22px 58px rgba(20, 33, 61, 0.12);
   --header-height: 108px;
   font-family: "Lato", Arial, sans-serif;
   color: var(--ink);
@@ -43,7 +43,7 @@ body {
 
 body::selection {
   background: var(--clay-100);
-  color: var(--olive-900);
+  color: var(--navy-900);
 }
 
 a {
@@ -79,7 +79,7 @@ p {
 h1,
 h2,
 h3 {
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-family: "EB Garamond", Georgia, serif;
   font-weight: 600;
   line-height: 1.03;
@@ -119,7 +119,7 @@ svg {
   z-index: 100;
   transform: translateY(-160%);
   border-radius: 6px;
-  background: var(--olive-900);
+  background: var(--navy-900);
   color: var(--paper);
   padding: 0.7rem 1rem;
   transition: transform 180ms ease;
@@ -203,7 +203,7 @@ textarea:focus-visible {
 .nav-list a {
   border-radius: 999px;
   padding: 0.56rem 0.88rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-size: 0.88rem;
   font-weight: 900;
   transition: background 180ms ease, color 180ms ease;
@@ -211,13 +211,13 @@ textarea:focus-visible {
 
 .nav-list a:hover,
 .nav-list a.active {
-  background: var(--olive-100);
-  color: var(--olive-800);
+  background: var(--navy-100);
+  color: var(--navy-800);
 }
 
 .nav-list .nav-cta {
   border-radius: 6px;
-  background: var(--olive-900);
+  background: var(--navy-900);
   color: #fff;
   margin-left: 0.35rem;
   padding-inline: 1rem;
@@ -238,7 +238,7 @@ textarea:focus-visible {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--paper);
-  color: var(--olive-900);
+  color: var(--navy-900);
 }
 
 .icon-button svg {
@@ -255,7 +255,7 @@ textarea:focus-visible {
   align-items: center;
   min-height: min(760px, calc(92svh - var(--header-height)));
   border-bottom: 1px solid var(--border);
-  background: var(--olive-50);
+  background: var(--navy-50);
   padding: 3.6rem 0 3.8rem;
 }
 
@@ -298,7 +298,7 @@ textarea:focus-visible {
 }
 
 .hero-highlights div {
-  border: 1px solid rgba(215, 224, 219, 0.92);
+  border: 1px solid rgba(217, 222, 232, 0.92);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.84);
   padding: 0.8rem 0.86rem;
@@ -315,7 +315,7 @@ textarea:focus-visible {
 
 .hero-highlights p {
   margin-top: 0.18rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-size: 0.86rem;
   font-weight: 900;
   line-height: 1.35;
@@ -328,10 +328,10 @@ textarea:focus-visible {
     "footer footer";
   grid-template-columns: minmax(170px, 0.55fr) minmax(0, 1fr);
   overflow: hidden;
-  border: 1px solid rgba(23, 51, 31, 0.16);
+  border: 1px solid rgba(20, 33, 61, 0.16);
   border-radius: 8px;
   background: var(--paper);
-  box-shadow: 0 28px 70px rgba(23, 51, 31, 0.16);
+  box-shadow: 0 28px 70px rgba(20, 33, 61, 0.16);
   min-width: 0;
 }
 
@@ -353,7 +353,7 @@ textarea:focus-visible {
 }
 
 .hero-card-brand p {
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-size: 0.96rem;
   font-weight: 900;
   line-height: 1.45;
@@ -377,7 +377,7 @@ textarea:focus-visible {
   grid-area: footer;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  background: var(--olive-900);
+  background: var(--navy-900);
   color: #fff;
 }
 
@@ -442,16 +442,16 @@ textarea:focus-visible {
 .button.secondary {
   border-color: rgba(23, 33, 58, 0.24);
   background: rgba(255, 253, 248, 0.78);
-  color: var(--olive-900);
+  color: var(--navy-900);
 }
 
 .button.secondary:hover {
-  background: var(--olive-100);
+  background: var(--navy-100);
 }
 
 .button.on-dark {
   background: var(--paper);
-  color: var(--olive-900);
+  color: var(--navy-900);
   box-shadow: none;
 }
 
@@ -471,7 +471,7 @@ textarea:focus-visible {
   background: var(--linen);
 }
 
-.band-sage {
+.band-slate {
   background: var(--bluewash);
 }
 
@@ -605,9 +605,9 @@ textarea:focus-visible {
   align-content: space-between;
   gap: 1.35rem;
   overflow: hidden;
-  border-color: rgba(23, 51, 31, 0.15);
+  border-color: rgba(20, 33, 61, 0.15);
   padding: 2rem;
-  box-shadow: 0 24px 58px rgba(23, 51, 31, 0.1);
+  box-shadow: 0 24px 58px rgba(20, 33, 61, 0.1);
 }
 
 .assurance-panel::before {
@@ -615,7 +615,7 @@ textarea:focus-visible {
   position: absolute;
   inset: 0 0 auto 0;
   height: 7px;
-  background: linear-gradient(90deg, var(--clay-600), var(--bronze), var(--olive-700));
+  background: linear-gradient(90deg, var(--clay-600), var(--bronze), var(--navy-700));
 }
 
 .assurance-topline {
@@ -638,8 +638,8 @@ textarea:focus-visible {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: var(--olive-100);
-  color: var(--olive-800);
+  background: var(--navy-100);
+  color: var(--navy-800);
   padding: 0.6rem;
 }
 
@@ -659,7 +659,7 @@ textarea:focus-visible {
   gap: 0.55rem;
   border-top: 1px solid var(--border);
   padding-top: 0.9rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-weight: 900;
 }
 
@@ -723,7 +723,7 @@ textarea:focus-visible {
 
 .page-hero p:not(.eyebrow) {
   max-width: 760px;
-  color: #41473a;
+  color: #334155;
   font-size: 1.18rem;
 }
 
@@ -731,7 +731,7 @@ textarea:focus-visible {
   min-height: 68px;
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-weight: 900;
 }
 
@@ -748,7 +748,7 @@ textarea:focus-visible {
   min-height: 340px;
   background:
     linear-gradient(135deg, rgba(23, 33, 58, 0.94), rgba(166, 79, 44, 0.72)),
-    var(--olive-700);
+    var(--navy-700);
 }
 
 .profile-photo span {
@@ -789,9 +789,9 @@ textarea:focus-visible {
 .tag-list span {
   border: 1px solid rgba(23, 33, 58, 0.16);
   border-radius: 999px;
-  background: var(--olive-50);
+  background: var(--navy-50);
   padding: 0.38rem 0.62rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-size: 0.84rem;
   font-weight: 900;
 }
@@ -843,7 +843,7 @@ textarea:focus-visible {
   height: 54px;
   border: 8px solid var(--linen);
   border-radius: 50%;
-  background: var(--olive-900);
+  background: var(--navy-900);
   color: var(--paper);
   font-weight: 900;
   box-shadow: 0 16px 32px rgba(23, 33, 58, 0.16);
@@ -916,7 +916,7 @@ textarea:focus-visible {
 }
 
 .faq-item summary {
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-family: "EB Garamond", Georgia, serif;
   font-size: 1.5rem;
   font-weight: 600;
@@ -956,7 +956,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-weight: 900;
 }
 
@@ -979,7 +979,7 @@ textarea:focus-visible {
 .contact-form label {
   display: grid;
   gap: 0.42rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
   font-weight: 900;
 }
 
@@ -1004,11 +1004,11 @@ textarea:focus-visible {
   border-left: 3px solid var(--clay-600);
   background: var(--clay-100);
   padding: 0.75rem 0.9rem;
-  color: var(--olive-900);
+  color: var(--navy-900);
 }
 
 .cta-band {
-  background: var(--olive-900);
+  background: var(--navy-900);
 }
 
 .cta-inner {
@@ -1084,8 +1084,8 @@ textarea:focus-visible {
 @media (max-width: 980px) {
   .nav-toggle {
     display: inline-flex;
-    border-color: var(--olive-900);
-    background: var(--olive-900);
+    border-color: var(--navy-900);
+    background: var(--navy-900);
     color: #fff;
   }
 

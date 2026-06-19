@@ -400,7 +400,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section band-sage" aria-labelledby="services-preview-heading">
+      <section className="section band-slate" aria-labelledby="services-preview-heading">
         <div className="page-shell">
           <div className="section-heading">
             <p className="eyebrow">Services</p>
