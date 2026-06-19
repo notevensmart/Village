@@ -7,10 +7,8 @@ import {
   FileText,
   HeartHandshake,
   Mail,
-  Menu,
   ShieldCheck,
   Sparkles,
-  X,
 } from "lucide-react";
 
 const navItems = [
@@ -232,13 +230,11 @@ function getCurrentPage() {
 
 function App() {
   const [page, setPage] = useState(getCurrentPage);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
       const nextPage = getCurrentPage();
       setPage(nextPage);
-      setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
@@ -265,30 +261,21 @@ function App() {
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
-      <Header activePage={page} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Header activePage={page} />
       <main id="main">{pageContent}</main>
       <Footer />
     </>
   );
 }
 
-function Header({ activePage, menuOpen, setMenuOpen }) {
+function Header({ activePage }) {
   return (
     <header className="site-header">
       <div className="header-inner">
         <a className="brand-link" href="#home" aria-label="Village Clinical Consultancy home">
           <img src="/village-logo-cropped.png" alt="Village Clinical Consultancy logo" />
         </a>
-        <button
-          className="icon-button nav-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((isOpen) => !isOpen)}
-        >
-          {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </button>
-        <nav className={`nav-list ${menuOpen ? "open" : ""}`} aria-label="Primary navigation">
+        <nav className="nav-list" aria-label="Primary navigation">
           {navItems.map((item) => (
             <a
               key={item.id}
