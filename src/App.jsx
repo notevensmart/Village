@@ -431,7 +431,6 @@ function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="Professional assessment grounded in care, clarity, and collaboration."
-        text="Village Clinical Consultancy supports families and referral partners through thoughtful multidisciplinary assessment, clear process design, and respectful communication."
       />
       <section className="section" aria-labelledby="mission-heading">
         <div className="page-shell split-section">
@@ -500,7 +499,6 @@ function TeamPage() {
       <PageHero
         eyebrow="Our team"
         title="Professional profiles that help families and referrers feel aligned."
-        text="Two practitioner profiles are included for review. Final biographies, credentials, registrations, and photos can be added when supplied."
       />
       <section className="section" aria-labelledby="team-heading">
         <div className="page-shell">
@@ -540,7 +538,6 @@ function ServicesPage() {
       <PageHero
         eyebrow="Our services"
         title="Clear assessment services with expectations set early."
-        text="Village supports private family report, dyadic assessment, consultation, and stakeholder communication pathways for families and professionals."
       />
       <section className="section" aria-labelledby="service-list-heading">
         <div className="page-shell">
@@ -609,7 +606,6 @@ function FaqPage() {
       <PageHero
         eyebrow="Frequently asked questions"
         title="Direct answers for families, lawyers, and referrers."
-        text="These FAQs are draft publication copy and should be reviewed by the business owner before launch."
       />
       <section className="section" aria-labelledby="faq-heading">
         <div className="page-shell faq-shell">
@@ -637,25 +633,24 @@ function ContactPage() {
       <PageHero
         eyebrow="Contact us"
         title="Start with a clear, confidential enquiry."
-        text="Tell us who you are, who you are enquiring for, and what assessment support you need. Village will review suitability and next steps."
       />
       <section className="section" aria-labelledby="contact-heading">
         <div className="page-shell contact-layout">
           <div className="contact-copy">
-            <p className="eyebrow">Enquiries</p>
-            <h2 id="contact-heading">Send an enquiry</h2>
-            <p>
-              Email address and phone number are placeholders until the business confirms final contact details for launch.
-            </p>
-            <div className="contact-methods">
-              <a href="mailto:enquiries@villageclinicalconsultancy.com.au">
-                <Mail aria-hidden="true" />
-                enquiries@villageclinicalconsultancy.com.au
-              </a>
-              <span>
-                <Clock3 aria-hidden="true" />
-                Flexible appointments by arrangement
-              </span>
+            <div className="contact-detail-group">
+              <h2 id="contact-heading">Email</h2>
+              <a href="mailto:hello@villageclinical.com.au">hello@villageclinical.com.au</a>
+            </div>
+            <div className="contact-detail-group">
+              <h2>Operating Hours</h2>
+              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+              <p className="contact-note">After-hours and weekend appointments available upon request.</p>
+            </div>
+            <div className="contact-referrals">
+              <h2>Referrals</h2>
+              <p>
+                We accept referrals directly from legal practitioners, family court orders, and private clients. All assessments are conducted by our dual-clinician team.
+              </p>
             </div>
           </div>
           <form
@@ -665,32 +660,40 @@ function ContactPage() {
               setSent(true);
             }}
           >
-            <label>
-              Name
-              <input name="name" type="text" autoComplete="name" required />
-            </label>
-            <label>
-              Email
-              <input name="email" type="email" autoComplete="email" required />
-            </label>
-            <label>
-              I am enquiring as
-              <select name="audience" required defaultValue="">
-                <option value="" disabled>
-                  Select one
-                </option>
-                <option>Parent or family member</option>
-                <option>Lawyer or law firm</option>
-                <option>Referral partner</option>
-                <option>Professional stakeholder</option>
-              </select>
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows="6" required />
-            </label>
+            <h2>Submit an Inquiry</h2>
+            <div className="form-grid">
+              <label>
+                Full Name
+                <input name="name" type="text" autoComplete="name" placeholder="Jane Doe" required />
+              </label>
+              <label>
+                Email Address
+                <input name="email" type="email" autoComplete="email" placeholder="jane@example.com" required />
+              </label>
+              <label>
+                Phone Number
+                <input name="phone" type="tel" autoComplete="tel" placeholder="0400 000 000" required />
+              </label>
+              <label>
+                Matter Type
+                <select name="matterType" required defaultValue="">
+                  <option value="" disabled>
+                    Select matter type
+                  </option>
+                  <option>Private family report</option>
+                  <option>Dyadic assessment</option>
+                  <option>Consultation</option>
+                  <option>Stakeholder communication</option>
+                  <option>Other enquiry</option>
+                </select>
+              </label>
+              <label className="full-span">
+                Message
+                <textarea name="message" rows="7" placeholder="Please provide brief details about your inquiry..." required />
+              </label>
+            </div>
             <button className="button primary" type="submit">
-              Submit enquiry
+              Send Inquiry
               <ArrowRight aria-hidden="true" />
             </button>
             {sent && (
@@ -710,7 +713,7 @@ function LegalPage({ pageId }) {
 
   return (
     <>
-      <PageHero eyebrow="Legal" title={page.title} text={page.intro} />
+      <PageHero eyebrow="Legal" title={page.title} />
       <section className="section" aria-labelledby={`${pageId}-heading`}>
         <div className="page-shell legal-shell">
           <h2 id={`${pageId}-heading`}>Placeholder content for review</h2>
@@ -726,13 +729,12 @@ function LegalPage({ pageId }) {
   );
 }
 
-function PageHero({ eyebrow, title, text }) {
+function PageHero({ eyebrow, title }) {
   return (
     <section className="page-hero">
       <div className="page-shell">
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
-        <p>{text}</p>
       </div>
     </section>
   );

@@ -176,7 +176,7 @@ svg {
 .button:focus-visible,
 .icon-button:focus-visible,
 .footer-grid a:focus-visible,
-.contact-methods a:focus-visible,
+.contact-copy a:focus-visible,
 summary:focus-visible,
 input:focus-visible,
 select:focus-visible,
@@ -467,6 +467,10 @@ textarea:focus-visible {
   padding-top: 4.2rem;
 }
 
+.page-hero + .section {
+  padding-top: 2.8rem;
+}
+
 .band-light {
   background: var(--linen);
 }
@@ -704,27 +708,26 @@ textarea:focus-visible {
 }
 
 .page-hero {
-  padding: clamp(5.5rem, 10vw, 8rem) 0 clamp(4rem, 7vw, 6rem);
-  background:
-    linear-gradient(90deg, rgba(251, 247, 239, 0.98), rgba(251, 247, 239, 0.78)),
-    url("/village-hero-child.png") center right / cover no-repeat;
+  padding: 1.45rem 0 1.25rem;
+  background: var(--paper);
   border-bottom: 1px solid var(--border);
 }
 
 .page-hero .page-shell {
-  display: grid;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   gap: 1rem;
+  min-width: 0;
 }
 
 .page-hero h1 {
-  max-width: 940px;
-  font-size: 4.7rem;
+  max-width: 780px;
+  font-size: 2.55rem;
 }
 
-.page-hero p:not(.eyebrow) {
-  max-width: 760px;
-  color: #334155;
-  font-size: 1.18rem;
+.page-hero .eyebrow {
+  flex: 0 0 auto;
 }
 
 .value-item {
@@ -871,9 +874,16 @@ textarea:focus-visible {
 .pricing-layout,
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 4rem);
   align-items: start;
+}
+
+.pricing-layout {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+}
+
+.contact-layout {
+  grid-template-columns: minmax(240px, 0.5fr) minmax(0, 1.18fr);
 }
 
 .pricing-panel {
@@ -942,44 +952,80 @@ textarea:focus-visible {
 
 .contact-copy {
   display: grid;
-  gap: 1rem;
+  gap: clamp(1.8rem, 4vw, 3rem);
 }
 
-.contact-methods {
+.contact-detail-group {
   display: grid;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  gap: 0.7rem;
 }
 
-.contact-methods a,
-.contact-methods span {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+.contact-detail-group h2,
+.contact-referrals h2 {
+  font-size: clamp(2rem, 3vw, 2.55rem);
+}
+
+.contact-detail-group a,
+.contact-detail-group p,
+.contact-referrals p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.contact-detail-group a {
   color: var(--navy-900);
   font-weight: 900;
 }
 
-.contact-methods svg {
-  width: 20px;
-  height: 20px;
-  color: var(--clay-700);
+.contact-note {
+  max-width: 360px;
+  font-style: italic;
 }
 
-.contact-form {
+.contact-referrals {
   display: grid;
   gap: 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--paper);
-  padding: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  box-shadow: 0 16px 36px rgba(23, 33, 58, 0.07);
+}
+
+.contact-referrals p {
+  max-width: 440px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.45rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: clamp(1.6rem, 4vw, 3rem);
   box-shadow: var(--shadow);
+}
+
+.contact-form h2 {
+  font-size: clamp(2.45rem, 4vw, 3.2rem);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.45rem clamp(1.35rem, 3vw, 2rem);
+}
+
+.full-span {
+  grid-column: 1 / -1;
 }
 
 .contact-form label {
   display: grid;
-  gap: 0.42rem;
+  gap: 0.55rem;
   color: var(--navy-900);
+  font-size: 1rem;
   font-weight: 900;
 }
 
@@ -987,17 +1033,32 @@ textarea:focus-visible {
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  min-height: 46px;
-  border: 1px solid #cfc7b8;
+  min-height: 54px;
+  border: 1px solid var(--border);
   border-radius: 6px;
   background: #fff;
   color: var(--ink);
-  padding: 0.75rem 0.82rem;
+  padding: 0.85rem 0.95rem;
+  box-shadow: 0 8px 18px rgba(23, 33, 58, 0.06);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777066;
+}
+
+.contact-form select:invalid {
+  color: #777066;
 }
 
 .contact-form textarea {
-  min-height: 150px;
+  min-height: 190px;
   resize: vertical;
+}
+
+.contact-form .button {
+  justify-self: start;
+  min-width: 190px;
 }
 
 .form-status {
@@ -1186,9 +1247,22 @@ textarea:focus-visible {
   }
 
   h2,
-  .trust-heading h2,
-  .page-hero h1 {
+  .trust-heading h2 {
     font-size: 2.55rem;
+  }
+
+  .page-hero {
+    padding: 1rem 0 0.9rem;
+  }
+
+  .page-hero .page-shell {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .page-hero h1 {
+    font-size: 2.05rem;
   }
 
   .hero-text {
@@ -1205,6 +1279,23 @@ textarea:focus-visible {
 
   .section-heading {
     text-align: left;
+  }
+
+  .contact-form {
+    padding: 1.25rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .full-span {
+    grid-column: auto;
+  }
+
+  .contact-form .button {
+    justify-self: stretch;
   }
 
   .feature-grid,
