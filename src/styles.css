@@ -192,6 +192,14 @@ textarea:focus-visible {
   mix-blend-mode: multiply;
 }
 
+.brand-link img,
+.hero-card-brand img,
+.footer-grid img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 .nav-list {
   display: flex;
   align-items: center;
@@ -1164,6 +1172,8 @@ textarea:focus-visible {
 
   .brand-link img {
     width: 82px;
+    filter: contrast(1.03);
+    mix-blend-mode: multiply;
   }
 
   .header-cta {
@@ -1346,14 +1356,21 @@ textarea:focus-visible {
     align-items: center;
     gap: 0.8rem;
     border-right: 0;
-    border-top: 1px solid var(--border);
+    border-top: 0;
     border-bottom: 0;
+    background:
+      linear-gradient(180deg, rgba(248, 250, 252, 0.72), rgba(255, 255, 255, 0.56)),
+      var(--navy-50);
     padding: 0.8rem 0.9rem;
   }
 
   .hero-card-brand img {
     flex: 0 0 auto;
     width: 118px;
+    filter: saturate(0.92) contrast(1.04);
+    mix-blend-mode: multiply;
+    -webkit-mask-image: radial-gradient(ellipse 96% 86% at 50% 50%, #000 64%, rgba(0, 0, 0, 0.76) 84%, transparent 100%);
+    mask-image: radial-gradient(ellipse 96% 86% at 50% 50%, #000 64%, rgba(0, 0, 0, 0.76) 84%, transparent 100%);
   }
 
   .hero-card-brand p {
