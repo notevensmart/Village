@@ -31,26 +31,20 @@ const pageTitles = {
   disclaimer: "Website Disclaimer | Village Clinical Consultancy",
 };
 
-const assurancePanels = [
+const trustPoints = [
   {
-    audience: "Care",
-    title: "Care and support for the child",
-    text: "Children are supported through a calm, paced assessment process that respects how they communicate and what helps them feel safe enough to participate.",
-    proof: "Child-centred participation, not pressure",
+    title: "Child-centred",
+    text: "Participation is paced to the child and the referral question.",
     icon: HeartHandshake,
   },
   {
-    audience: "Clarity",
-    title: "A clear and transparent process",
-    text: "Families, lawyers, and referrers know what is being assessed, what information is needed, what fees apply, and how timing will be managed.",
-    proof: "Scope, fees, and timing set out upfront",
+    title: "Clear from the start",
+    text: "Scope, timing, fees, and information needs are set out early.",
     icon: FileText,
   },
   {
-    audience: "Balance",
-    title: "Balanced, practical, useful outcomes",
-    text: "Findings are tested through a dyadic, multidisciplinary lens so reports are careful, bias-aware, and focused on decisions people can actually use.",
-    proof: "Two professional lenses strengthen report quality",
+    title: "Balanced reporting",
+    text: "Dyadic review supports careful, practical recommendations.",
     icon: ShieldCheck,
   },
 ];
@@ -313,7 +307,7 @@ function HomePage() {
             <p className="eyebrow">Child-centred family assessment and report services</p>
             <h1 id="home-heading">Professional family assessments with care, clarity, and balance.</h1>
             <p className="hero-text">
-              Village Clinical Consultancy supports families, lawyers, and referral partners with calm multidisciplinary assessments, clear process design, and practical child-focused recommendations.
+              Calm multidisciplinary assessments for families, lawyers, and referrers when parenting decisions need careful professional input.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
@@ -335,13 +329,13 @@ function HomePage() {
           </div>
 
           <div className="hero-card" aria-label="Village assessment brand and child-centred care">
+            <figure className="hero-image-wrap">
+              <img src="/village-hero-child.png" alt="Child drawing during a supportive family assessment appointment" />
+            </figure>
             <div className="hero-card-brand" title="Village Clinical Consultancy">
               <LogoLockup />
               <p>Multidisciplinary assessment and report services for complex family pathways.</p>
             </div>
-            <figure className="hero-image-wrap">
-              <img src="/village-hero-child.png" alt="Child drawing during a supportive family assessment appointment" />
-            </figure>
             <div className="hero-card-footer" aria-label="Core Village trust signals">
               <span>Dyadic review</span>
               <span>Flexible appointments</span>
@@ -355,52 +349,28 @@ function HomePage() {
         <div className="page-shell">
           <div className="section-heading trust-heading">
             <p className="eyebrow">Why clients trust Village</p>
-            <h2 id="unique-heading">The essentials should be clear before a family ever attends.</h2>
-            <p>
-              These are the promises that shape the assessment experience for children, parents, lawyers, and referral partners.
-            </p>
+            <h2 id="unique-heading">Careful assessment, clear communication, practical recommendations.</h2>
           </div>
-          <div className="assurance-grid">
-            {assurancePanels.map((item) => (
-              <AssurancePanel key={item.audience} {...item} />
+          <div className="trust-grid">
+            {trustPoints.map(({ icon: Icon, title, text }) => (
+              <article className="trust-point" key={title}>
+                <Icon aria-hidden="true" />
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="snapshot-heading">
-        <div className="page-shell split-section">
-          <div>
-            <p className="eyebrow">Snapshot</p>
-            <h2 id="snapshot-heading">Support for family report and assessment pathways.</h2>
-          </div>
-          <div className="text-stack">
-            <p>
-              We provide structured family assessment services with clear intake, transparent scope setting, dyadic review, and child-focused recommendations.
-            </p>
-            <ul className="check-list">
-              <li>
-                <CheckCircle2 aria-hidden="true" />
-                Independent family report and consultation pathways
-              </li>
-              <li>
-                <CheckCircle2 aria-hidden="true" />
-                Flexible appointments where suitable for the family
-              </li>
-              <li>
-                <CheckCircle2 aria-hidden="true" />
-                Communication designed for parents, lawyers, and referrers
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="section band-slate" aria-labelledby="services-preview-heading">
+      <section className="section services-preview" aria-labelledby="services-preview-heading">
         <div className="page-shell">
           <div className="section-heading">
             <p className="eyebrow">Services</p>
             <h2 id="services-preview-heading">Clear options for families and professionals.</h2>
+            <p>Explore the main pathways, then use the services page for more detail.</p>
           </div>
           <div className="service-grid compact">
             {services.slice(0, 3).map((service) => (
@@ -802,7 +772,7 @@ function CtaBand() {
           <p className="eyebrow">Next step</p>
           <h2 id="cta-heading">Ready to discuss whether Village is the right fit?</h2>
         </div>
-        <a className="button primary on-dark" href="#contact">
+        <a className="button primary" href="#contact">
           Send an enquiry
           <ArrowRight aria-hidden="true" />
         </a>
