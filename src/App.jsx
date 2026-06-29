@@ -53,7 +53,7 @@ const aboutParagraphs = [
   "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
 ];
 
-const homeHeroText = aboutParagraphs[0].replace(" (VCC)", "");
+const homeHeroText = aboutParagraphs[0];
 
 const services = [
   {

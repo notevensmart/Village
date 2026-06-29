@@ -1524,6 +1524,7 @@ textarea:focus-visible {
   .hero-card {
     grid-template-areas:
       "image"
+      "footer"
       "brand";
     grid-template-columns: 1fr;
     margin-top: 0.2rem;
@@ -1569,7 +1570,21 @@ textarea:focus-visible {
   }
 
   .hero-card-footer {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-card-footer span {
+    min-height: 42px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(222, 212, 194, 0.9);
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .hero-card-footer span:last-child {
+    border-bottom: 0;
   }
 
   .assurance-panel {
