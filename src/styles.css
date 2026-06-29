@@ -263,10 +263,10 @@ textarea:focus-visible {
 .hero {
   display: flex;
   align-items: center;
-  min-height: min(720px, calc(90svh - var(--header-height)));
+  min-height: min(650px, calc(82svh - var(--header-height)));
   border-bottom: 1px solid var(--border);
   background: var(--cream);
-  padding: 3.2rem 0 3.4rem;
+  padding: 2.8rem 0 3rem;
 }
 
 .hero-layout {
@@ -297,38 +297,6 @@ textarea:focus-visible {
   color: var(--muted);
   font-size: 1.12rem;
   overflow-wrap: break-word;
-}
-
-.hero-highlights {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 720px;
-  gap: 0.8rem;
-  padding-top: 0.2rem;
-}
-
-.hero-highlights div {
-  border: 1px solid rgba(222, 212, 194, 0.96);
-  border-radius: 8px;
-  background: rgba(255, 253, 248, 0.86);
-  padding: 0.8rem 0.86rem;
-}
-
-.hero-highlights span {
-  display: block;
-  color: var(--clay-700);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.hero-highlights p {
-  margin-top: 0.18rem;
-  color: var(--navy-900);
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.35;
 }
 
 .hero-card {
@@ -487,7 +455,7 @@ textarea:focus-visible {
 }
 
 .hero + .section {
-  padding-top: 4.2rem;
+  padding-top: 3.4rem;
 }
 
 .page-hero + .section {
@@ -499,12 +467,29 @@ textarea:focus-visible {
   padding-top: clamp(2.35rem, 5vw, 4rem);
 }
 
+.intro-section {
+  padding-bottom: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.about-values-section {
+  padding-top: clamp(1.2rem, 3vw, 2rem);
+  padding-bottom: clamp(4rem, 7vw, 5.8rem);
+}
+
+.team-section {
+  padding-bottom: clamp(3.8rem, 6vw, 5.2rem);
+}
+
 .band-light {
   background: var(--cream);
 }
 
 .band-slate {
   background: var(--cream);
+}
+
+.services-preview {
+  padding-bottom: clamp(4rem, 7vw, 6.2rem);
 }
 
 .section-heading {
@@ -669,6 +654,8 @@ textarea:focus-visible {
 .feature-card {
   display: grid;
   gap: 1rem;
+  min-height: 150px;
+  align-content: center;
 }
 
 .assurance-grid {
@@ -1384,7 +1371,7 @@ textarea:focus-visible {
 
   .hero {
     min-height: auto;
-    padding: 3.2rem 0 3.6rem;
+    padding: 2.6rem 0 3.2rem;
   }
 
   .hero-layout {
@@ -1453,7 +1440,7 @@ textarea:focus-visible {
   }
 
   .hero {
-    padding: 1.8rem 0 3rem;
+    padding: 1.65rem 0 2.7rem;
   }
 
   h1 {
@@ -1532,10 +1519,6 @@ textarea:focus-visible {
     grid-column: auto;
     border-top: 1px solid rgba(222, 212, 194, 0.9);
     border-left: 0;
-  }
-
-  .hero-highlights {
-    display: none;
   }
 
   .hero-card {

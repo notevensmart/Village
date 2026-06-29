@@ -29,42 +29,31 @@ const pageTitles = {
 
 const trustPoints = [
   {
-    title: "therapeutic",
+    title: "Therapeutic",
     text: "Village Clinical Consultancy (VCC) is a collective of therapeutic, trauma-informed, strength-based, systems-conscious mental health clinicians from across the spectrum, including psychologists, counsellors, social workers, psychotherapists, and mental health social workers.",
     icon: HeartHandshake,
   },
   {
-    title: "collaboratively",
+    title: "Collaborative",
     text: "VCC brings all these professions together to work collaboratively to ensure a high standard of clinical practice for those it works with.",
     icon: FileText,
   },
   {
-    title: "specialist lens",
+    title: "Specialist Lens",
     text: "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
     icon: ShieldCheck,
   },
 ];
 
-const heroHighlights = [
-  {
-    label: "psychologists",
-    text: "counsellors",
-  },
-  {
-    label: "social workers",
-    text: "psychotherapists",
-  },
-  {
-    label: "mental health",
-    text: "social workers",
-  },
-];
+const heroValues = ["Trauma-informed", "Strength-based", "Systems-conscious"];
 
 const aboutParagraphs = [
   "Village Clinical Consultancy (VCC) is a collective of therapeutic, trauma-informed, strength-based, systems-conscious mental health clinicians from across the spectrum, including psychologists, counsellors, social workers, psychotherapists, and mental health social workers.",
   "VCC brings all these professions together to work collaboratively to ensure a high standard of clinical practice for those it works with.",
   "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
 ];
+
+const homeHeroText = aboutParagraphs[0].replace(" (VCC)", "");
 
 const services = [
   {
@@ -140,8 +129,7 @@ const profiles = [
     experienceItems: ["Direct clinical work", "Training facilitation", "Mediation", "Team leadership", "Statewide program practice leadership"],
     expertiseIntro: "Thomas has specialist experience in:",
     expertise: ["Sexual abuse", "Family systems", "Family violence"],
-    biography:
-      "Thomas has worked for over 15 years with individuals and families experiencing complex trauma across both community and private sectors.",
+    biography: "",
   },
   {
     initials: "AK",
@@ -158,9 +146,8 @@ const profiles = [
     roles: ["Private practice", "Neurodiverse specialist psychological support", "Team leadership", "Allied health management"],
     expertiseIntro:
       "Angela's direct practice focuses on supporting and scaffolding parents by providing strategies and upskilling to help them achieve their goals.",
-    expertise: ["Parents", "Children", "Family systems"],
-    biography:
-      "Angela's direct practice focuses on supporting and scaffolding parents by providing strategies and upskilling to help them achieve their goals.",
+    expertise: [],
+    biography: "",
   },
 ];
 
@@ -320,9 +307,8 @@ function HomePage() {
       <section className="hero" aria-labelledby="home-heading">
         <div className="page-shell hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow">Village Clinical Consultancy (VCC)</p>
-            <h1 id="home-heading">Village Clinical Consultancy (VCC)</h1>
-            <p className="hero-text">{aboutParagraphs[0]}</p>
+            <h1 id="home-heading">Village Clinical Consultancy</h1>
+            <p className="hero-text">{homeHeroText}</p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
                 Send an enquiry
@@ -331,14 +317,6 @@ function HomePage() {
               <a className="button secondary" href="#services">
                 View services
               </a>
-            </div>
-            <div className="hero-highlights" aria-label="Village service highlights">
-              {heroHighlights.map((item) => (
-                <div key={item.label}>
-                  <span>{item.label}</span>
-                  <p>{item.text}</p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -351,29 +329,10 @@ function HomePage() {
               <p>{aboutParagraphs[1]}</p>
             </div>
             <div className="hero-card-footer" aria-label="Core Village trust signals">
-              <span>About Us</span>
-              <span>Our Team</span>
-              <span>Services</span>
+              {heroValues.map((value) => (
+                <span key={value}>{value}</span>
+              ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section trust-section" aria-labelledby="unique-heading">
-        <div className="page-shell">
-          <div className="section-heading trust-heading">
-            <h2 id="unique-heading">About Us</h2>
-          </div>
-          <div className="trust-grid">
-            {trustPoints.map(({ icon: Icon, title, text }) => (
-              <article className="trust-point" key={title}>
-                <Icon aria-hidden="true" />
-                <div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>
@@ -417,11 +376,11 @@ function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section content-grid-section" aria-label="About Village approach">
+      <section className="section content-grid-section about-values-section" aria-label="About Village approach">
         <div className="page-shell">
           <div className="feature-grid">
-            {trustPoints.map(({ icon: Icon, title, text }) => (
-              <FeatureCard key={title} icon={Icon} title={title} text={text} />
+            {trustPoints.map(({ icon: Icon, title }) => (
+              <FeatureCard key={title} icon={Icon} title={title} />
             ))}
           </div>
         </div>
@@ -436,7 +395,7 @@ function TeamPage() {
       <PageHero
         title="Our Team"
       />
-      <section className="section content-grid-section" aria-label="Our team profiles">
+      <section className="section content-grid-section team-section" aria-label="Our team profiles">
         <div className="page-shell">
           <div className="profile-grid">
             {profiles.map((profile) => (
@@ -456,7 +415,7 @@ function ServicesPage() {
       <PageHero
         title="Services"
       />
-      <section className="section content-grid-section" aria-label="Services">
+      <section className="section content-grid-section services-section" aria-label="Services">
         <div className="page-shell">
           <div className="service-grid">
             {services.map((service) => (
@@ -642,7 +601,7 @@ function FeatureCard({ icon: Icon, title, text }) {
         <Icon aria-hidden="true" />
       </div>
       <h3>{title}</h3>
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </article>
   );
 }
@@ -656,7 +615,9 @@ function ProfileCard({ profile }) {
       <div className="profile-content">
         <h3>{profile.heading}</h3>
         <div className="profile-section">
-          <h4>Experience and Expertise</h4>
+          <h4>Experience and Approach</h4>
+          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
+          {profile.qualificationIntro && profile.qualifications.length > 0 && <ProfileList items={profile.qualifications} />}
           {profile.experience.map((item) => (
             <p key={item}>{item}</p>
           ))}
@@ -675,31 +636,9 @@ function ProfileCard({ profile }) {
             </>
           )}
           {profile.experienceItems && <ProfileList items={profile.experienceItems} />}
-        </div>
-        <div className="profile-section">
-          <h4>Qualifications</h4>
-          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
-          <ul className="check-list">
-            {profile.qualifications.map((item) => (
-              <li key={item}>
-                <CheckCircle2 aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="profile-section">
-          <h4>Areas of Expertise</h4>
           <p>{profile.expertiseIntro}</p>
-          <div className="tag-list" aria-label="Areas of expertise">
-            {profile.expertise.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-        </div>
-        <div className="profile-section">
-          <h4>Biography</h4>
-          <p>{profile.biography}</p>
+          {profile.expertise.length > 0 && <ProfileList items={profile.expertise} />}
+          {profile.biography && <p>{profile.biography}</p>}
         </div>
       </div>
     </article>
