@@ -4,7 +4,6 @@ import {
   CheckCircle2,
   FileText,
   HeartHandshake,
-  ReceiptText,
   ShieldCheck,
 } from "lucide-react";
 
@@ -118,9 +117,7 @@ const profiles = [
   {
     initials: "SI",
     name: "Siri Indukuri",
-    pronouns: "She/Her",
     heading: "Siri Indukuri (She/Her)",
-    group: "Our Team",
     qualifications: ["clinical counsellor and psychotherapist"],
     experience: [
       "Siri is a clinical counsellor and psychotherapist who works with adolescents and young adults, as well as families and parents navigating complex emotional and relational experiences.",
@@ -133,9 +130,7 @@ const profiles = [
   {
     initials: "TG",
     name: "Thomas Gould",
-    pronouns: "He/Him",
     heading: "Thomas Gould (He/Him)",
-    group: "Our Team",
     qualificationIntro: "Thomas Gould is a Mental Health Accredited Social Worker with:",
     qualifications: ["Clinical Masters in Family Therapy", "Master of Social Work", "Bachelor of Human Services"],
     experience: [
@@ -151,9 +146,7 @@ const profiles = [
   {
     initials: "AK",
     name: "Angela Karamalakis",
-    pronouns: "She/Her",
     heading: "Angela Karamalakis (She/Her)",
-    group: "Consultants",
     qualificationIntro: "Angela holds:",
     qualifications: ["Masters of Professional Psychology", "Masters of Professional Psychology Practice"],
     experience: [
@@ -369,7 +362,6 @@ function HomePage() {
       <section className="section trust-section" aria-labelledby="unique-heading">
         <div className="page-shell">
           <div className="section-heading trust-heading">
-            <p className="eyebrow">About Us</p>
             <h2 id="unique-heading">About Us</h2>
           </div>
           <div className="trust-grid">
@@ -389,7 +381,6 @@ function HomePage() {
       <section className="section services-preview" aria-labelledby="services-preview-heading">
         <div className="page-shell">
           <div className="section-heading">
-            <p className="eyebrow">Services</p>
             <h2 id="services-preview-heading">Services</h2>
           </div>
           <div className="service-grid compact">
@@ -415,15 +406,10 @@ function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Us"
         title="Village Clinical Consultancy (VCC)"
       />
-      <section className="section" aria-labelledby="mission-heading">
-        <div className="page-shell split-section">
-          <div>
-            <p className="eyebrow">About Us</p>
-            <h2 id="mission-heading">Village Clinical Consultancy (VCC)</h2>
-          </div>
+      <section className="section intro-section" aria-label="About Village Clinical Consultancy">
+        <div className="page-shell intro-copy">
           <div className="text-stack">
             {aboutParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -431,12 +417,8 @@ function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section" aria-labelledby="approach-heading">
+      <section className="section content-grid-section" aria-label="About Village approach">
         <div className="page-shell">
-          <div className="section-heading">
-            <p className="eyebrow">About Us</p>
-            <h2 id="approach-heading">About Us</h2>
-          </div>
           <div className="feature-grid">
             {trustPoints.map(({ icon: Icon, title, text }) => (
               <FeatureCard key={title} icon={Icon} title={title} text={text} />
@@ -452,15 +434,10 @@ function TeamPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Team"
         title="Our Team"
       />
-      <section className="section" aria-labelledby="team-heading">
+      <section className="section content-grid-section" aria-label="Our team profiles">
         <div className="page-shell">
-          <div className="section-heading narrow">
-            <p className="eyebrow">Our Team</p>
-            <h2 id="team-heading">Our Team</h2>
-          </div>
           <div className="profile-grid">
             {profiles.map((profile) => (
               <ProfileCard key={profile.name} profile={profile} />
@@ -477,15 +454,10 @@ function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
         title="Services"
       />
-      <section className="section" aria-labelledby="service-list-heading">
+      <section className="section content-grid-section" aria-label="Services">
         <div className="page-shell">
-          <div className="section-heading">
-            <p className="eyebrow">Services</p>
-            <h2 id="service-list-heading">Services</h2>
-          </div>
           <div className="service-grid">
             {services.map((service) => (
               <ServiceCard key={service.name} service={service} />
@@ -496,7 +468,6 @@ function ServicesPage() {
       <section className="section band-light" aria-labelledby="additional-services-heading">
         <div className="page-shell">
           <div className="section-heading">
-            <p className="eyebrow">Additional Services</p>
             <h2 id="additional-services-heading">Additional Services</h2>
           </div>
           <AdditionalServicesTable />
@@ -640,7 +611,7 @@ function PageHero({ eyebrow, title }) {
   return (
     <section className="page-hero">
       <div className="page-shell">
-        <p className="eyebrow">{eyebrow}</p>
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
       </div>
     </section>
@@ -679,34 +650,11 @@ function FeatureCard({ icon: Icon, title, text }) {
 function ProfileCard({ profile }) {
   return (
     <article className="profile-card professional-profile">
-      <div className="profile-photo" aria-label={`${profile.name} profile marker`}>
+      <div className="profile-photo" aria-hidden="true">
         <span>{profile.initials}</span>
       </div>
       <div className="profile-content">
-        <p className="profile-role">{profile.group}</p>
         <h3>{profile.heading}</h3>
-        <dl className="profile-meta">
-          <div>
-            <dt>Name</dt>
-            <dd>{profile.name}</dd>
-          </div>
-          <div>
-            <dt>Pronouns</dt>
-            <dd>{profile.pronouns}</dd>
-          </div>
-        </dl>
-        <div className="profile-section">
-          <h4>Qualifications</h4>
-          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
-          <ul className="check-list">
-            {profile.qualifications.map((item) => (
-              <li key={item}>
-                <CheckCircle2 aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
         <div className="profile-section">
           <h4>Experience and Expertise</h4>
           {profile.experience.map((item) => (
@@ -729,9 +677,21 @@ function ProfileCard({ profile }) {
           {profile.experienceItems && <ProfileList items={profile.experienceItems} />}
         </div>
         <div className="profile-section">
+          <h4>Qualifications</h4>
+          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
+          <ul className="check-list">
+            {profile.qualifications.map((item) => (
+              <li key={item}>
+                <CheckCircle2 aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="profile-section">
           <h4>Areas of Expertise</h4>
           <p>{profile.expertiseIntro}</p>
-          <div className="tag-list" aria-label={`${profile.name} areas of expertise`}>
+          <div className="tag-list" aria-label="Areas of expertise">
             {profile.expertise.map((item) => (
               <span key={item}>{item}</span>
             ))}
@@ -762,10 +722,6 @@ function ProfileList({ items }) {
 function ServiceCard({ service, compact = false }) {
   return (
     <article className={`service-card ${compact ? "compact-card" : ""}`}>
-      <div className="service-card-topline">
-        <ReceiptText aria-hidden="true" />
-        <span>Services</span>
-      </div>
       <h3>{service.name}</h3>
       <div className="service-facts">
         <div>
