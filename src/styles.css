@@ -74,13 +74,15 @@ a[href] {
 h1,
 h2,
 h3,
+h4,
 p {
   margin: 0;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: var(--navy-900);
   font-family: "Figtree", Arial, sans-serif;
   font-weight: 650;
@@ -98,6 +100,10 @@ h2 {
 
 h3 {
   font-size: 1.35rem;
+}
+
+h4 {
+  font-size: 0.92rem;
 }
 
 p {
@@ -620,7 +626,9 @@ textarea:focus-visible {
 }
 
 .profile-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .value-grid {
@@ -752,6 +760,59 @@ textarea:focus-visible {
   gap: 1rem;
 }
 
+.service-card-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--clay-700);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.service-card-topline svg {
+  width: 18px;
+  height: 18px;
+}
+
+.service-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.service-facts div {
+  display: grid;
+  gap: 0.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream-warm);
+  padding: 0.85rem;
+}
+
+.service-facts span {
+  color: var(--clay-700);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.service-facts strong {
+  color: var(--navy-900);
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.service-card h4,
+.profile-section h4 {
+  color: var(--clay-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .service-card ul {
   display: grid;
   gap: 0.65rem;
@@ -759,8 +820,53 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
+.compact-card h4,
 .compact-card ul {
   display: none;
+}
+
+.additional-services-table {
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid rgba(222, 212, 194, 0.96);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.additional-services-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.additional-services-table th,
+.additional-services-table td {
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.additional-services-table th {
+  background: var(--cream-warm);
+  color: var(--clay-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.additional-services-table td {
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+.additional-services-table th:last-child,
+.additional-services-table td:last-child {
+  text-align: right;
+}
+
+.additional-services-table tr:last-child td {
+  border-bottom: 0;
 }
 
 .page-hero {
@@ -800,6 +906,10 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
+.professional-profile {
+  grid-template-columns: minmax(170px, 0.38fr) minmax(0, 1fr);
+}
+
 .profile-photo {
   display: flex;
   align-items: center;
@@ -831,12 +941,54 @@ textarea:focus-visible {
   padding: clamp(1.4rem, 3vw, 2rem);
 }
 
+.professional-profile .profile-content {
+  align-content: start;
+}
+
 .profile-role {
   color: var(--clay-700);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.profile-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.profile-meta div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream-warm);
+  padding: 0.8rem 0.9rem;
+}
+
+.profile-meta dt {
+  color: var(--clay-700);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.profile-meta dd {
+  margin: 0.16rem 0 0;
+  color: var(--navy-900);
+  font-weight: 750;
+}
+
+.profile-section {
+  display: grid;
+  gap: 0.65rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.compact-list {
+  gap: 0.45rem;
 }
 
 .tag-list {
@@ -1299,10 +1451,13 @@ textarea:focus-visible {
   .assurance-grid,
   .service-grid,
   .service-grid.compact,
-  .profile-grid,
   .value-grid,
   .trust-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
   }
 
   .trust-point:nth-child(3) {
@@ -1501,6 +1656,11 @@ textarea:focus-visible {
   }
 
   .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-meta,
+  .service-facts {
     grid-template-columns: 1fr;
   }
 

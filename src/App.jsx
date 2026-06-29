@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
-  CalendarDays,
   CheckCircle2,
-  Clock3,
   FileText,
   HeartHandshake,
-  Mail,
+  ReceiptText,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 const navItems = [
@@ -33,118 +30,144 @@ const pageTitles = {
 
 const trustPoints = [
   {
-    title: "Child-centred",
-    text: "Participation is paced to the child and the referral question.",
+    title: "therapeutic",
+    text: "Village Clinical Consultancy (VCC) is a collective of therapeutic, trauma-informed, strength-based, systems-conscious mental health clinicians from across the spectrum, including psychologists, counsellors, social workers, psychotherapists, and mental health social workers.",
     icon: HeartHandshake,
   },
   {
-    title: "Clear from the start",
-    text: "Scope, timing, fees, and information needs are set out early.",
+    title: "collaboratively",
+    text: "VCC brings all these professions together to work collaboratively to ensure a high standard of clinical practice for those it works with.",
     icon: FileText,
   },
   {
-    title: "Balanced reporting",
-    text: "Dyadic review supports careful, practical recommendations.",
+    title: "specialist lens",
+    text: "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
     icon: ShieldCheck,
   },
 ];
 
 const heroHighlights = [
   {
-    label: "For families",
-    text: "Careful child-inclusive participation",
+    label: "psychologists",
+    text: "counsellors",
   },
   {
-    label: "For lawyers",
-    text: "Report-ready scope and communication",
+    label: "social workers",
+    text: "psychotherapists",
   },
   {
-    label: "For referrers",
-    text: "Multidisciplinary clinical perspective",
+    label: "mental health",
+    text: "social workers",
   },
+];
+
+const aboutParagraphs = [
+  "Village Clinical Consultancy (VCC) is a collective of therapeutic, trauma-informed, strength-based, systems-conscious mental health clinicians from across the spectrum, including psychologists, counsellors, social workers, psychotherapists, and mental health social workers.",
+  "VCC brings all these professions together to work collaboratively to ensure a high standard of clinical practice for those it works with.",
+  "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
 ];
 
 const services = [
   {
-    name: "Private Family Reports",
-    summary:
-      "Independent family assessments to assist parents, lawyers, and courts with child-focused parenting decisions.",
-    includes: ["Parent interviews", "Child-inclusive assessment where suitable", "Collateral review", "Written report"],
+    name: "Child Impact Report (Early Intervention)",
+    fee: "$4,500 + GST",
+    delivery: "10 days",
+    includes: [
+      "Review of up to 150 pages",
+      "Focused observations and interviews",
+      "Interviews with two caregivers",
+      "One face-to-face interview",
+      "Parent–child observations (30 minutes per parent)",
+      "Short-form report",
+    ],
   },
   {
-    name: "Dyadic Assessments",
-    summary:
-      "Assessment work completed through two professional lenses to strengthen balance, reflection, and quality assurance.",
-    includes: ["Two-practitioner review", "Integrated formulation", "Bias-aware recommendations", "Clear next steps"],
+    name: "Standard Family Report Package",
+    fee: "$7,500 + GST",
+    delivery: "4–6 weeks",
+    includes: [
+      "Review of up to 300 pages",
+      "All inclusions from the Child Impact Report",
+      "Additional 1-hour parent telehealth sessions (if required)",
+      "Child interviews (up to two children, 30–60 minutes each, subject to consent)",
+    ],
   },
   {
-    name: "Child and Family Consultation",
-    summary:
-      "Focused consultation for family dynamics, parenting concerns, and referral questions requiring specialist clinical input.",
-    includes: ["Intake triage", "Family context mapping", "Professional consultation", "Referral guidance"],
-  },
-  {
-    name: "Stakeholder and Lawyer Briefings",
-    summary:
-      "Concise communication with legal and referral partners so scope, process, expectations, and timing remain clear.",
-    includes: ["Scope confirmation", "Document request checklist", "Timeline planning", "Progress communication"],
+    name: "Full Family Report – Complex / Blended Family Assessment Package",
+    fee: "$11,000 + GST",
+    delivery: "6–8 weeks",
+    includes: [
+      "All inclusions from the Standard Family Report",
+      "Interviews with two additional adults",
+      "Psychometric assessments of care providers",
+      "Expanded risk assessment",
+      "Clinical recommendations",
+    ],
   },
 ];
 
-const processSteps = [
-  {
-    label: "1",
-    eyebrow: "Start",
-    title: "Enquiry and triage",
-    text: "We clarify who is involved, what question needs answering, and whether Village is the right professional fit before anything is booked.",
-    outcome: "You leave with a clear next step.",
-  },
-  {
-    label: "2",
-    eyebrow: "Plan",
-    title: "Scope, fees, and scheduling",
-    text: "Appointments, document needs, indicative timing, flexible availability, and fees are set out in writing before work begins.",
-    outcome: "The process is mapped before the family attends.",
-  },
-  {
-    label: "3",
-    eyebrow: "Assess",
-    title: "Assessment appointments",
-    text: "Parents, children, and relevant stakeholders are seen according to the agreed scope, with child participation handled carefully.",
-    outcome: "Information is gathered through more than one lens.",
-  },
-  {
-    label: "4",
-    eyebrow: "Resolve",
-    title: "Dyadic review and report",
-    text: "Findings are tested through the dyadic model before the final report or consultation outcome is delivered.",
-    outcome: "Recommendations are clearer, balanced, and usable.",
-  },
-];
-
-const values = [
-  "Child-centred practice",
-  "Respect for every family member",
-  "Evidence-informed assessment",
-  "Clear communication",
-  "Professional independence",
-  "Practical recommendations",
+const additionalServices = [
+  ["Subpoena & Document Review", "$250/hour"],
+  ["Addendum Report", "$1,500–$2,500"],
+  ["Court Attendance (Full Day)", "$1,000/day"],
+  ["Court Attendance (Half Day)", "$600/half-day"],
+  ["Additional Interviewee", "$1,100/person"],
 ];
 
 const profiles = [
   {
-    initials: "VP",
-    name: "Village Practitioner",
-    role: "Family Consultant",
-    bio: "Placeholder biography for a senior clinician with experience in family assessment, child-inclusive practice, and professional report writing.",
-    focus: ["Family reports", "Child-inclusive assessment", "Risk-informed practice"],
+    initials: "SI",
+    name: "Siri Indukuri",
+    pronouns: "She/Her",
+    heading: "Siri Indukuri (She/Her)",
+    group: "Our Team",
+    qualifications: ["clinical counsellor and psychotherapist"],
+    experience: [
+      "Siri is a clinical counsellor and psychotherapist who works with adolescents and young adults, as well as families and parents navigating complex emotional and relational experiences.",
+    ],
+    expertiseIntro: "She specialises in supporting individuals who are:",
+    expertise: ["Neurodivergent", "Experiencing anxiety", "Experiencing depression"],
+    biography:
+      "Siri approaches therapy with warmth, curiosity, and an understanding that healing does not happen in isolation, but within the contexts and communities people move through every day.",
   },
   {
-    initials: "CP",
-    name: "Consulting Practitioner",
-    role: "Mental Health Professional",
-    bio: "Placeholder biography for a multidisciplinary practitioner contributing a second professional lens to assessments and recommendations.",
-    focus: ["Dyadic review", "Family systems", "Collaborative care"],
+    initials: "TG",
+    name: "Thomas Gould",
+    pronouns: "He/Him",
+    heading: "Thomas Gould (He/Him)",
+    group: "Our Team",
+    qualificationIntro: "Thomas Gould is a Mental Health Accredited Social Worker with:",
+    qualifications: ["Clinical Masters in Family Therapy", "Master of Social Work", "Bachelor of Human Services"],
+    experience: [
+      "Thomas has worked for over 15 years with individuals and families experiencing complex trauma across both community and private sectors.",
+    ],
+    experienceIntro: "His experience includes:",
+    experienceItems: ["Direct clinical work", "Training facilitation", "Mediation", "Team leadership", "Statewide program practice leadership"],
+    expertiseIntro: "Thomas has specialist experience in:",
+    expertise: ["Sexual abuse", "Family systems", "Family violence"],
+    biography:
+      "Thomas has worked for over 15 years with individuals and families experiencing complex trauma across both community and private sectors.",
+  },
+  {
+    initials: "AK",
+    name: "Angela Karamalakis",
+    pronouns: "She/Her",
+    heading: "Angela Karamalakis (She/Her)",
+    group: "Consultants",
+    qualificationIntro: "Angela holds:",
+    qualifications: ["Masters of Professional Psychology", "Masters of Professional Psychology Practice"],
+    experience: [
+      "She has worked in the field for over 9 years.",
+      "Angela has worked with:",
+    ],
+    workedWith: ["Parents", "Children", "Family systems"],
+    workIncludes: ["Clinical support", "Psychoeducation", "Psychometric testing", "Diagnostic assessments"],
+    roles: ["Private practice", "Neurodiverse specialist psychological support", "Team leadership", "Allied health management"],
+    expertiseIntro:
+      "Angela's direct practice focuses on supporting and scaffolding parents by providing strategies and upskilling to help them achieve their goals.",
+    expertise: ["Parents", "Children", "Family systems"],
+    biography:
+      "Angela's direct practice focuses on supporting and scaffolding parents by providing strategies and upskilling to help them achieve their goals.",
   },
 ];
 
@@ -304,11 +327,9 @@ function HomePage() {
       <section className="hero" aria-labelledby="home-heading">
         <div className="page-shell hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow">Child-centred family assessment and report services</p>
-            <h1 id="home-heading">Professional family assessments with care, clarity, and balance.</h1>
-            <p className="hero-text">
-              Calm multidisciplinary assessments for families, lawyers, and referrers when parenting decisions need careful professional input.
-            </p>
+            <p className="eyebrow">Village Clinical Consultancy (VCC)</p>
+            <h1 id="home-heading">Village Clinical Consultancy (VCC)</h1>
+            <p className="hero-text">{aboutParagraphs[0]}</p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">
                 Send an enquiry
@@ -334,12 +355,12 @@ function HomePage() {
             </figure>
             <div className="hero-card-brand" title="Village Clinical Consultancy">
               <LogoLockup />
-              <p>Multidisciplinary assessment and report services for complex family pathways.</p>
+              <p>{aboutParagraphs[1]}</p>
             </div>
             <div className="hero-card-footer" aria-label="Core Village trust signals">
-              <span>Dyadic review</span>
-              <span>Flexible appointments</span>
-              <span>Clear expectations</span>
+              <span>About Us</span>
+              <span>Our Team</span>
+              <span>Services</span>
             </div>
           </div>
         </div>
@@ -348,8 +369,8 @@ function HomePage() {
       <section className="section trust-section" aria-labelledby="unique-heading">
         <div className="page-shell">
           <div className="section-heading trust-heading">
-            <p className="eyebrow">Why clients trust Village</p>
-            <h2 id="unique-heading">Careful assessment, clear communication, practical recommendations.</h2>
+            <p className="eyebrow">About Us</p>
+            <h2 id="unique-heading">About Us</h2>
           </div>
           <div className="trust-grid">
             {trustPoints.map(({ icon: Icon, title, text }) => (
@@ -369,8 +390,7 @@ function HomePage() {
         <div className="page-shell">
           <div className="section-heading">
             <p className="eyebrow">Services</p>
-            <h2 id="services-preview-heading">Clear options for families and professionals.</h2>
-            <p>Explore the main pathways, then use the services page for more detail.</p>
+            <h2 id="services-preview-heading">Services</h2>
           </div>
           <div className="service-grid compact">
             {services.slice(0, 3).map((service) => (
@@ -395,37 +415,18 @@ function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About us"
-        title="Professional assessment grounded in care, clarity, and collaboration."
+        eyebrow="About Us"
+        title="Village Clinical Consultancy (VCC)"
       />
       <section className="section" aria-labelledby="mission-heading">
         <div className="page-shell split-section">
           <div>
-            <p className="eyebrow">Mission</p>
-            <h2 id="mission-heading">To help families and professionals understand complex family circumstances with confidence.</h2>
+            <p className="eyebrow">About Us</p>
+            <h2 id="mission-heading">Village Clinical Consultancy (VCC)</h2>
           </div>
           <div className="text-stack">
-            <p>
-              Village exists to provide high quality assessment services that keep children, family context, safety, and practical recommendations at the centre of the work.
-            </p>
-            <p>
-              The team works with lawyers, law firms, parents, and referral partners who need an independent process that feels organised, respectful, and professionally robust.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="section band-light" aria-labelledby="values-heading">
-        <div className="page-shell">
-          <div className="section-heading narrow">
-            <p className="eyebrow">Values</p>
-            <h2 id="values-heading">The standards behind the Village approach.</h2>
-          </div>
-          <div className="value-grid">
-            {values.map((value) => (
-              <div className="value-item" key={value}>
-                <CheckCircle2 aria-hidden="true" />
-                <span>{value}</span>
-              </div>
+            {aboutParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         </div>
@@ -433,25 +434,13 @@ function AboutPage() {
       <section className="section" aria-labelledby="approach-heading">
         <div className="page-shell">
           <div className="section-heading">
-            <p className="eyebrow">Approach</p>
-            <h2 id="approach-heading">A multidisciplinary village, not a single viewpoint.</h2>
+            <p className="eyebrow">About Us</p>
+            <h2 id="approach-heading">About Us</h2>
           </div>
           <div className="feature-grid">
-            <FeatureCard
-              icon={HeartHandshake}
-              title="Human and respectful"
-              text="Families are often engaging during stressful circumstances. The process is designed to feel steady, clear, and respectful."
-            />
-            <FeatureCard
-              icon={FileText}
-              title="Structured and report-ready"
-              text="Each assessment pathway is scoped with the final professional output in mind so expectations are clear from the beginning."
-            />
-            <FeatureCard
-              icon={ShieldCheck}
-              title="Independent and balanced"
-              text="Dyadic review and multidisciplinary input support careful professional reflection and balanced recommendations."
-            />
+            {trustPoints.map(({ icon: Icon, title, text }) => (
+              <FeatureCard key={title} icon={Icon} title={title} text={text} />
+            ))}
           </div>
         </div>
       </section>
@@ -463,32 +452,18 @@ function TeamPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our team"
-        title="Professional profiles that help families and referrers feel aligned."
+        eyebrow="Our Team"
+        title="Our Team"
       />
       <section className="section" aria-labelledby="team-heading">
         <div className="page-shell">
           <div className="section-heading narrow">
-            <p className="eyebrow">Practitioners</p>
-            <h2 id="team-heading">A village of specialist professionals.</h2>
+            <p className="eyebrow">Our Team</p>
+            <h2 id="team-heading">Our Team</h2>
           </div>
           <div className="profile-grid">
             {profiles.map((profile) => (
-              <article className="profile-card" key={profile.name}>
-                <div className="profile-photo" aria-label={`${profile.name} photo placeholder`}>
-                  <span>{profile.initials}</span>
-                </div>
-                <div className="profile-content">
-                  <p className="profile-role">{profile.role}</p>
-                  <h3>{profile.name}</h3>
-                  <p>{profile.bio}</p>
-                  <div className="tag-list" aria-label={`${profile.name} focus areas`}>
-                    {profile.focus.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
+              <ProfileCard key={profile.name} profile={profile} />
             ))}
           </div>
         </div>
@@ -502,14 +477,14 @@ function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our services"
-        title="Clear assessment services with expectations set early."
+        eyebrow="Services"
+        title="Services"
       />
       <section className="section" aria-labelledby="service-list-heading">
         <div className="page-shell">
           <div className="section-heading">
-            <p className="eyebrow">Service menu</p>
-            <h2 id="service-list-heading">What can be included.</h2>
+            <p className="eyebrow">Services</p>
+            <h2 id="service-list-heading">Services</h2>
           </div>
           <div className="service-grid">
             {services.map((service) => (
@@ -518,47 +493,13 @@ function ServicesPage() {
           </div>
         </div>
       </section>
-      <section className="section band-light" aria-labelledby="process-heading">
+      <section className="section band-light" aria-labelledby="additional-services-heading">
         <div className="page-shell">
           <div className="section-heading">
-            <p className="eyebrow">Process</p>
-            <h2 id="process-heading">A clear pathway, stacked in the order families experience it.</h2>
+            <p className="eyebrow">Additional Services</p>
+            <h2 id="additional-services-heading">Additional Services</h2>
           </div>
-          <div className="process-stack" aria-label="Village assessment process">
-            {processSteps.map((step) => (
-              <article className="process-step" key={step.label}>
-                <div className="process-marker">
-                  <span>{step.label}</span>
-                </div>
-                <div className="process-card">
-                  <p className="process-eyebrow">{step.eyebrow}</p>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                  <div className="process-outcome">
-                    <Sparkles aria-hidden="true" />
-                    <span>{step.outcome}</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section" aria-labelledby="pricing-heading">
-        <div className="page-shell pricing-layout">
-          <div className="section-heading align-left">
-            <p className="eyebrow">Pricing and timelines</p>
-            <h2 id="pricing-heading">Transparent before booking, scoped to the matter.</h2>
-            <p>
-              Final fees and timeframes must be confirmed by Village before publication. This page uses professional placeholder wording so it can be reviewed without inventing fixed prices.
-            </p>
-          </div>
-          <div className="pricing-panel">
-            <InfoRow icon={Mail} label="Initial enquiry" value="Reviewed before suitability or availability is confirmed." />
-            <InfoRow icon={FileText} label="Family report fees" value="Quote provided after referral scope, documents, and appointment needs are understood." />
-            <InfoRow icon={Clock3} label="Indicative timeframe" value="Scheduling and delivery timelines are confirmed in writing before the assessment begins." />
-            <InfoRow icon={CalendarDays} label="Flexible appointments" value="After-hours and weekend options may be available by arrangement." />
-          </div>
+          <AdditionalServicesTable />
         </div>
       </section>
       <CtaBand />
@@ -735,11 +676,108 @@ function FeatureCard({ icon: Icon, title, text }) {
   );
 }
 
+function ProfileCard({ profile }) {
+  return (
+    <article className="profile-card professional-profile">
+      <div className="profile-photo" aria-label={`${profile.name} profile marker`}>
+        <span>{profile.initials}</span>
+      </div>
+      <div className="profile-content">
+        <p className="profile-role">{profile.group}</p>
+        <h3>{profile.heading}</h3>
+        <dl className="profile-meta">
+          <div>
+            <dt>Name</dt>
+            <dd>{profile.name}</dd>
+          </div>
+          <div>
+            <dt>Pronouns</dt>
+            <dd>{profile.pronouns}</dd>
+          </div>
+        </dl>
+        <div className="profile-section">
+          <h4>Qualifications</h4>
+          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
+          <ul className="check-list">
+            {profile.qualifications.map((item) => (
+              <li key={item}>
+                <CheckCircle2 aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="profile-section">
+          <h4>Experience and Expertise</h4>
+          {profile.experience.map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+          {profile.experienceIntro && <p>{profile.experienceIntro}</p>}
+          {profile.workedWith && <ProfileList items={profile.workedWith} />}
+          {profile.workIncludes && (
+            <>
+              <p>Her work includes:</p>
+              <ProfileList items={profile.workIncludes} />
+            </>
+          )}
+          {profile.roles && (
+            <>
+              <p>She has held roles in:</p>
+              <ProfileList items={profile.roles} />
+            </>
+          )}
+          {profile.experienceItems && <ProfileList items={profile.experienceItems} />}
+        </div>
+        <div className="profile-section">
+          <h4>Areas of Expertise</h4>
+          <p>{profile.expertiseIntro}</p>
+          <div className="tag-list" aria-label={`${profile.name} areas of expertise`}>
+            {profile.expertise.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+        <div className="profile-section">
+          <h4>Biography</h4>
+          <p>{profile.biography}</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProfileList({ items }) {
+  return (
+    <ul className="check-list compact-list">
+      {items.map((item) => (
+        <li key={item}>
+          <CheckCircle2 aria-hidden="true" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function ServiceCard({ service, compact = false }) {
   return (
     <article className={`service-card ${compact ? "compact-card" : ""}`}>
+      <div className="service-card-topline">
+        <ReceiptText aria-hidden="true" />
+        <span>Services</span>
+      </div>
       <h3>{service.name}</h3>
-      <p>{service.summary}</p>
+      <div className="service-facts">
+        <div>
+          <span>Fee:</span>
+          <strong>{service.fee}</strong>
+        </div>
+        <div>
+          <span>Delivery:</span>
+          <strong>{service.delivery}</strong>
+        </div>
+      </div>
+      <h4>Includes</h4>
       <ul>
         {service.includes.map((item) => (
           <li key={item}>
@@ -749,6 +787,29 @@ function ServiceCard({ service, compact = false }) {
         ))}
       </ul>
     </article>
+  );
+}
+
+function AdditionalServicesTable() {
+  return (
+    <div className="additional-services-table" role="region" aria-labelledby="additional-services-heading">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          {additionalServices.map(([service, fee]) => (
+            <tr key={service}>
+              <td>{service}</td>
+              <td>{fee}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
