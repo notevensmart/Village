@@ -441,8 +441,8 @@ function FaqPage() {
   return (
     <>
       <PageHero
-        eyebrow="Frequently asked questions"
-        title="Direct answers for families, lawyers, and referrers."
+        title="FAQ"
+        subtitle="Direct answers for families, lawyers, and referrers."
       />
       <section className="section" aria-labelledby="faq-heading">
         <div className="page-shell faq-shell">
@@ -566,12 +566,15 @@ function LegalPage({ pageId }) {
   );
 }
 
-function PageHero({ eyebrow, title }) {
+function PageHero({ eyebrow, title, subtitle }) {
   return (
     <section className="page-hero">
       <div className="page-shell">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h1>{title}</h1>
+        <div className="page-hero-copy">
+          <h1>{title}</h1>
+          {subtitle && <p className="page-subheading">{subtitle}</p>}
+        </div>
       </div>
     </section>
   );
