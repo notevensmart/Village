@@ -219,10 +219,9 @@ textarea:focus-visible {
   color: var(--village-green);
   font-size: 0.6rem;
   font-weight: 400;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   line-height: 1;
   text-align: center;
-  text-align-last: justify;
   text-transform: lowercase;
   white-space: nowrap;
 }
@@ -342,7 +341,7 @@ textarea:focus-visible {
 
 .hero-card-brand .logo-tagline {
   font-size: 0.78rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.08em;
 }
 
 .hero-card-brand p {
@@ -1331,6 +1330,7 @@ textarea:focus-visible {
   }
 
   .header-inner {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     grid-template-areas:
@@ -1358,12 +1358,13 @@ textarea:focus-visible {
 
   .brand-link .logo-tagline {
     font-size: 0.5rem;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.08em;
   }
 
   .header-cta {
-    grid-area: cta;
-    justify-self: end;
+    position: absolute;
+    top: 0.65rem;
+    right: 0;
     border-radius: 999px;
     padding: 0.5rem 0.82rem;
     font-size: 0.78rem;
@@ -1456,6 +1457,10 @@ textarea:focus-visible {
 
   .header-inner {
     width: min(100% - 24px, 1180px);
+  }
+
+  .header-cta {
+    top: 0.55rem;
   }
 
   .brand-link .logo-lockup {
@@ -1583,7 +1588,7 @@ textarea:focus-visible {
 
   .hero-card-brand .logo-tagline {
     font-size: 0.62rem;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.08em;
   }
 
   .hero-card-brand p {
@@ -1655,6 +1660,21 @@ textarea:focus-visible {
 
   .cta-inner {
     display: grid;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-link .logo-lockup {
+    width: 156px;
+  }
+
+  .brand-link .logo-lockup img {
+    height: 88px;
+  }
+
+  .header-cta {
+    padding: 0.46rem 0.7rem;
+    font-size: 0.74rem;
   }
 }
 
