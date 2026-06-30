@@ -180,6 +180,20 @@ svg {
   border-radius: 8px;
 }
 
+.brand-link .logo-lockup {
+  width: 318px;
+}
+
+.brand-link .logo-lockup img {
+  height: 112px;
+}
+
+@media (min-width: 901px) {
+  .brand-link .logo-lockup {
+    margin-block: 0.35rem;
+  }
+}
+
 .brand-link:focus-visible,
 .nav-list a:focus-visible,
 .nav-cta:focus-visible,
@@ -1372,12 +1386,14 @@ textarea:focus-visible {
   }
 
   .nav-list {
+    display: grid;
     grid-area: nav;
-    justify-content: flex-start;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    justify-content: stretch;
     width: 100%;
-    margin-inline: -0.2rem;
-    overflow-x: auto;
-    padding: 0.05rem 0.2rem 0.15rem;
+    margin-inline: 0;
+    overflow-x: visible;
+    padding: 0.05rem 0 0.15rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -1387,10 +1403,11 @@ textarea:focus-visible {
   }
 
   .nav-list a {
-    flex: 0 0 auto;
+    min-width: 0;
     border-radius: 999px;
-    padding: 0.52rem 0.78rem;
+    padding: 0.52rem 0.25rem;
     font-size: 0.78rem;
+    text-align: center;
     white-space: nowrap;
   }
 
@@ -1675,6 +1692,11 @@ textarea:focus-visible {
   .header-cta {
     padding: 0.46rem 0.7rem;
     font-size: 0.74rem;
+  }
+
+  .nav-list a {
+    padding-inline: 0.12rem;
+    font-size: 0.72rem;
   }
 }
 
