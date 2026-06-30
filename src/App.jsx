@@ -107,47 +107,34 @@ const profiles = [
     initials: "SI",
     name: "Siri Indukuri",
     heading: "Siri Indukuri (She/Her)",
-    qualifications: ["clinical counsellor and psychotherapist"],
-    experience: [
-      "Siri is a clinical counsellor and psychotherapist who works with adolescents and young adults, as well as families and parents navigating complex emotional and relational experiences.",
-    ],
-    expertiseIntro: "She specialises in supporting individuals who are:",
-    expertise: ["Neurodivergent", "Experiencing anxiety", "Experiencing depression"],
-    biography:
+    sectionHeading: "Experience and Expertise",
+    paragraphs: [
+      "Siri is a clinical counsellor and psychotherapist who works with adolescents and young adults, as well as families and parents navigating complex emotional and relational experiences. She specialises in supporting individuals who are neurodivergent, anxious, or experiencing depression, while recognising the unique ways identity, relationships, and broader systems shape mental health and wellbeing.",
       "Siri approaches therapy with warmth, curiosity, and an understanding that healing does not happen in isolation, but within the contexts and communities people move through every day.",
+    ],
   },
   {
     initials: "TG",
     name: "Thomas Gould",
     heading: "Thomas Gould (He/Him)",
-    qualificationIntro: "Thomas Gould is a Mental Health Accredited Social Worker with:",
-    qualifications: ["Clinical Masters in Family Therapy", "Master of Social Work", "Bachelor of Human Services"],
-    experience: [
-      "Thomas has worked for over 15 years with individuals and families experiencing complex trauma across both community and private sectors.",
+    sectionHeading: "Experience and Expertise",
+    paragraphs: [
+      "Thomas Gould is a Mental Health accredited Social Worker with a Clinical Masters in Family Therapy, a Master of Social Work and a Bachelor's Human Services.",
+      "Thomas has worked for over 15 years in complex trauma with individuals and families, he has worked in both the community and private sectors.",
+      "Thomas has held numerous roles inclusive of delivering direct clinical work, training facilitation, mediation, team leading and statewide program practice leadership. Thomas has extensive specialist experience in sexual abuse, family systems and  family violence.",
     ],
-    experienceIntro: "His experience includes:",
-    experienceItems: ["Direct clinical work", "Training facilitation", "Mediation", "Team leadership", "Statewide program practice leadership"],
-    expertiseIntro: "Thomas has specialist experience in:",
-    expertise: ["Sexual abuse", "Family systems", "Family violence"],
-    biography: "",
   },
   {
     initials: "AK",
     name: "Angela Karamalakis",
     heading: "Angela Karamalakis (She/Her)",
-    qualificationIntro: "Angela holds:",
-    qualifications: ["Masters of Professional Psychology", "Masters of Professional Psychology Practice"],
-    experience: [
-      "She has worked in the field for over 9 years.",
-      "Angela has worked with:",
+    sectionHeading: "Experience and Expertise",
+    paragraphs: [
+      "Angela holds a Masters of Professional Psychology, alongside a Masters of Professional Psychology Practice. She has been working in the field for over 9 years.",
+      "Angela has worked with parents, children and  family systems, providing clinical support, psychoeducation, psychometric testing, and diagnostic assessments.",
+      "Angela has held various roles in her career,  inclusive of;  private practice, neurodiverse specialist psychological support, team leadership, and allied health management.",
+      "Angela's direct practice focuses on supporting and scaffolding parents in the provision of strategies and upskilling to help them achieve their goals.",
     ],
-    workedWith: ["Parents", "Children", "Family systems"],
-    workIncludes: ["Clinical support", "Psychoeducation", "Psychometric testing", "Diagnostic assessments"],
-    roles: ["Private practice", "Neurodiverse specialist psychological support", "Team leadership", "Allied health management"],
-    expertiseIntro:
-      "Angela's direct practice focuses on supporting and scaffolding parents by providing strategies and upskilling to help them achieve their goals.",
-    expertise: [],
-    biography: "",
   },
 ];
 
@@ -618,46 +605,13 @@ function ProfileCard({ profile }) {
       <div className="profile-content">
         <h3>{profile.heading}</h3>
         <div className="profile-section">
-          <h4>Experience and Approach</h4>
-          {profile.qualificationIntro && <p>{profile.qualificationIntro}</p>}
-          {profile.qualificationIntro && profile.qualifications.length > 0 && <ProfileList items={profile.qualifications} />}
-          {profile.experience.map((item) => (
-            <p key={item}>{item}</p>
+          <h4>{profile.sectionHeading}</h4>
+          {profile.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
           ))}
-          {profile.experienceIntro && <p>{profile.experienceIntro}</p>}
-          {profile.workedWith && <ProfileList items={profile.workedWith} />}
-          {profile.workIncludes && (
-            <>
-              <p>Her work includes:</p>
-              <ProfileList items={profile.workIncludes} />
-            </>
-          )}
-          {profile.roles && (
-            <>
-              <p>She has held roles in:</p>
-              <ProfileList items={profile.roles} />
-            </>
-          )}
-          {profile.experienceItems && <ProfileList items={profile.experienceItems} />}
-          <p>{profile.expertiseIntro}</p>
-          {profile.expertise.length > 0 && <ProfileList items={profile.expertise} />}
-          {profile.biography && <p>{profile.biography}</p>}
         </div>
       </div>
     </article>
-  );
-}
-
-function ProfileList({ items }) {
-  return (
-    <ul className="check-list compact-list">
-      {items.map((item) => (
-        <li key={item}>
-          <CheckCircle2 aria-hidden="true" />
-          {item}
-        </li>
-      ))}
-    </ul>
   );
 }
 

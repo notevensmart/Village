@@ -19,6 +19,8 @@
   --bluewash: #f5ede0;
   --bronze: #9c744d;
   --village-green: #4f6917;
+  --village-green-dark: #34460f;
+  --village-green-soft: #eef3e3;
   --shadow: 0 20px 48px rgba(68, 53, 32, 0.1);
   --header-height: 108px;
   font-family: "Figtree", Arial, sans-serif;
@@ -188,13 +190,13 @@ summary:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(189, 99, 58, 0.45);
+  outline: 3px solid rgba(79, 105, 23, 0.42);
   outline-offset: 4px;
 }
 
 .logo-lockup {
   display: inline-grid;
-  width: 104px;
+  width: 208px;
   justify-items: center;
   gap: 0.03rem;
   pointer-events: none;
@@ -240,13 +242,13 @@ textarea:focus-visible {
 
 .nav-list a:hover,
 .nav-list a.active {
-  background: var(--navy-100);
-  color: var(--navy-800);
+  background: var(--village-green-soft);
+  color: var(--village-green-dark);
 }
 
 .header-cta {
   border-radius: 6px;
-  background: var(--navy-900);
+  background: var(--village-green);
   color: #fff;
   padding: 0.56rem 1rem;
   font-size: 0.88rem;
@@ -256,7 +258,7 @@ textarea:focus-visible {
 
 .header-cta:hover,
 .header-cta.active {
-  background: var(--clay-600);
+  background: var(--village-green-dark);
   color: #fff;
 }
 
@@ -326,7 +328,7 @@ textarea:focus-visible {
 
 .hero-card-brand .logo-lockup {
   flex: 0 0 auto;
-  width: 148px;
+  width: 296px;
   max-width: 100%;
 }
 
@@ -430,13 +432,13 @@ textarea:focus-visible {
 }
 
 .button.primary {
-  background: var(--clay-600);
+  background: var(--village-green);
   color: #fff;
-  box-shadow: 0 14px 32px rgba(166, 79, 44, 0.2);
+  box-shadow: 0 14px 32px rgba(79, 105, 23, 0.22);
 }
 
 .button.primary:hover {
-  background: var(--clay-700);
+  background: var(--village-green-dark);
 }
 
 .button.secondary {
@@ -1227,8 +1229,8 @@ textarea:focus-visible {
 }
 
 .form-status {
-  border-left: 3px solid var(--clay-600);
-  background: var(--clay-100);
+  border-left: 3px solid var(--village-green);
+  background: var(--village-green-soft);
   padding: 0.75rem 0.9rem;
   color: var(--navy-900);
 }
@@ -1274,7 +1276,7 @@ textarea:focus-visible {
 }
 
 .footer-grid .logo-lockup {
-  width: 132px;
+  width: 264px;
 }
 
 .footer-grid .logo-tagline {
@@ -1337,7 +1339,7 @@ textarea:focus-visible {
   }
 
   .brand-link .logo-lockup {
-    width: 82px;
+    width: 164px;
   }
 
   .brand-link .logo-lockup img {
@@ -1447,7 +1449,7 @@ textarea:focus-visible {
   }
 
   .brand-link .logo-lockup {
-    width: 72px;
+    width: 144px;
     height: auto;
   }
 
@@ -1556,7 +1558,7 @@ textarea:focus-visible {
 
   .hero-card-brand .logo-lockup {
     flex: 0 0 auto;
-    width: 118px;
+    width: 236px;
   }
 
   .hero-card-brand .logo-lockup img {
