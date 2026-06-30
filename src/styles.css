@@ -181,11 +181,16 @@ svg {
 }
 
 .brand-link .logo-lockup {
-  width: 318px;
+  width: 600px;
 }
 
 .brand-link .logo-lockup img {
+  width: 100%;
   height: 112px;
+}
+
+.brand-link .logo-tagline {
+  width: 100%;
 }
 
 @media (min-width: 901px) {
