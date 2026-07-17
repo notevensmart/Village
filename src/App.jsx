@@ -294,7 +294,7 @@ function HomePage() {
         <div className="page-shell hero-layout">
           <div className="hero-copy">
             <h1 id="home-heading">Village Clinical Consultancy</h1>
-            <p className="hero-text">{homeHeroText}</p>
+            
             <div className="hero-actions">
               <a className="button primary" href="#contact">
                 Send an enquiry
