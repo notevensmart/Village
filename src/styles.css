@@ -326,8 +326,7 @@ textarea:focus-visible {
   display: grid;
   grid-template-areas:
     "image"
-    "brand"
-    "footer";
+    "text";
   grid-template-columns: 1fr;
   overflow: hidden;
   border: 1px solid rgba(222, 212, 194, 0.96);
@@ -337,37 +336,18 @@ textarea:focus-visible {
   min-width: 0;
 }
 
-.hero-card-brand {
-  grid-area: brand;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.hero-card-text {
+  grid-area: text;
   border-top: 1px solid var(--border);
   background: rgba(255, 253, 248, 0.96);
-  padding: clamp(1rem, 2vw, 1.18rem) clamp(1.15rem, 2.6vw, 1.45rem);
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1.15rem, 2.6vw, 1.55rem);
 }
 
-.hero-card-brand .logo-lockup {
-  flex: 0 0 auto;
-  width: 318px;
-  max-width: 100%;
-}
-
-.hero-card-brand .logo-lockup img {
-  height: 176px;
-  width: 98%;
-}
-
-.hero-card-brand .logo-tagline {
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-}
-
-.hero-card-brand p {
+.hero-card-text p {
   color: var(--navy-900);
-  font-size: 0.88rem;
-  font-weight: 650;
-  line-height: 1.38;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .hero-image-wrap {
@@ -398,31 +378,6 @@ textarea:focus-visible {
   object-position: center;
   opacity: 0.98;
   filter: saturate(0.92) contrast(0.98) brightness(1.02);
-}
-
-.hero-card-footer {
-  grid-area: footer;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--border);
-  background: var(--cream-warm);
-  color: var(--navy-900);
-}
-
-.hero-card-footer span {
-  display: flex;
-  align-items: center;
-  min-height: 58px;
-  border-right: 1px solid rgba(222, 212, 194, 0.9);
-  padding: 0.8rem 1rem;
-  color: var(--navy-900);
-  font-size: 0.82rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.hero-card-footer span:last-child {
-  border-right: 0;
 }
 
 .hero-actions,
@@ -514,10 +469,6 @@ textarea:focus-visible {
 
 .band-slate {
   background: var(--cream);
-}
-
-.services-preview {
-  padding-bottom: clamp(4rem, 7vw, 6.2rem);
 }
 
 .section-heading {
@@ -1579,43 +1530,19 @@ textarea:focus-visible {
   .hero-card {
     grid-template-areas:
       "image"
-      "footer"
-      "brand";
+      "text";
     grid-template-columns: 1fr;
     margin-top: 0.2rem;
     box-shadow: 0 18px 42px rgba(68, 53, 32, 0.1);
   }
 
-  .hero-card-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.95rem;
-    border-right: 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 0;
-    background: rgba(255, 253, 248, 0.96);
-    padding: 0.9rem 1rem;
+  .hero-card-text {
+    padding: 0.95rem 1rem;
   }
 
-  .hero-card-brand .logo-lockup {
-    flex: 0 0 auto;
-    width: min(252px, 58vw);
-  }
-
-  .hero-card-brand .logo-lockup img {
-    height: 138px;
-    filter: saturate(0.92) contrast(1.04);
-    mix-blend-mode: multiply;
-  }
-
-  .hero-card-brand .logo-tagline {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-  }
-
-  .hero-card-brand p {
-    font-size: 0.82rem;
-    line-height: 1.35;
+  .hero-card-text p {
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .hero-image-wrap {
@@ -1624,24 +1551,6 @@ textarea:focus-visible {
 
   .hero-image-wrap img {
     object-position: 56% center;
-  }
-
-  .hero-card-footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    border-top: 1px solid var(--border);
-  }
-
-  .hero-card-footer span {
-    min-height: 42px;
-    border-right: 0;
-    border-bottom: 1px solid rgba(222, 212, 194, 0.9);
-    padding: 0.65rem 0.9rem;
-    font-size: 0.78rem;
-  }
-
-  .hero-card-footer span:last-child {
-    border-bottom: 0;
   }
 
   .assurance-panel {

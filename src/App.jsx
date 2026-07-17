@@ -45,15 +45,14 @@ const trustPoints = [
   },
 ];
 
-const heroValues = ["Trauma-informed", "Strength-based", "Systems-conscious"];
-
 const aboutParagraphs = [
   "Village Clinical Consultancy (VCC) is a collective of therapeutic, trauma-informed, strength-based, systems-conscious mental health clinicians from across the spectrum, including psychologists, counsellors, social workers, psychotherapists, and mental health social workers.",
   "VCC brings all these professions together to work collaboratively to ensure a high standard of clinical practice for those it works with.",
   "Every professional linked with VCC holds their own specialist lens, which contributes to their communities of practice through learning and internal upskilling, supporting all those in our Village and, by extension, the Village's client base.",
 ];
 
-const homeHeroText = aboutParagraphs[0];
+const homeHeroText =
+  "VCC brings together multidisciplinary expertise to provide high-quality clinical practice that is trauma-informed, strengths-based, and systems-conscious, ensuring comprehensive and holistic support for clients.";
 
 const services = [
   {
@@ -311,34 +310,9 @@ function HomePage() {
             <figure className="hero-image-wrap">
               <img src="/village-hero-child.png" alt="Child drawing during a supportive family assessment appointment" />
             </figure>
-            <div className="hero-card-brand" title="Village Clinical Consultancy">
-              <LogoLockup />
-              <p>{aboutParagraphs[1]}</p>
+            <div className="hero-card-text">
+              <p>{homeHeroText}</p>
             </div>
-            <div className="hero-card-footer" aria-label="Core Village trust signals">
-              {heroValues.map((value) => (
-                <span key={value}>{value}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section services-preview" aria-labelledby="services-preview-heading">
-        <div className="page-shell">
-          <div className="section-heading">
-            <h2 id="services-preview-heading">Services</h2>
-          </div>
-          <div className="service-grid compact">
-            {services.slice(0, 3).map((service) => (
-              <ServiceCard key={service.name} service={service} compact />
-            ))}
-          </div>
-          <div className="center-action">
-            <a className="button primary" href="#services">
-              Explore all services
-              <ArrowRight aria-hidden="true" />
-            </a>
           </div>
         </div>
       </section>
