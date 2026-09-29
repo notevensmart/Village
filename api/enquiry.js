@@ -35,7 +35,8 @@ export default async function handler(request, response) {
     return response.status(400).json({ error: "Invalid enquiry" });
   }
 
-  const { name, email, phone, matterType, message } = submission;
+  const { name, email, matterType, message } = submission;
+  const phone = submission.phone ?? "";
   const validText = (value, maxLength) =>
     typeof value === "string" && value.trim().length > 0 && value.trim().length <= maxLength;
 
@@ -43,7 +44,8 @@ export default async function handler(request, response) {
     !validText(name, 120) ||
     !validText(email, 254) ||
     !emailPattern.test(email.trim()) ||
-    !validText(phone, 50) ||
+    typeof phone !== "string" ||
+    phone.trim().length > 50 ||
     !matterTypes.has(matterType) ||
     !validText(message, 4000)
   ) {
@@ -72,7 +74,7 @@ export default async function handler(request, response) {
         text: [
           `Name: ${name.trim()}`,
           `Email: ${email.trim()}`,
-          `Phone: ${phone.trim()}`,
+          `Phone: ${phone.trim() || "Not provided"}`,
           `Matter type: ${matterType}`,
           "",
           "Message:",

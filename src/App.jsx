@@ -472,15 +472,14 @@ function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact us"
-        title="Start with a clear, confidential enquiry."
+        title="Contact"
       />
       <section className="section" aria-labelledby="contact-heading">
         <div className="page-shell contact-layout">
           <div className="contact-copy">
             <div className="contact-detail-group">
               <h2 id="contact-heading">Email</h2>
-              <a href="mailto:admin@villageclinicalconsultancy.com.au">admin@villageclinicalconsultancy.com.au</a>
+              <a className="contact-email" href="mailto:admin@villageclinicalconsultancy.com.au">admin@villageclinicalconsultancy.com.au</a>
             </div>
             <div className="contact-detail-group">
               <h2>Mobile</h2>
@@ -515,8 +514,8 @@ function ContactPage() {
                 <input name="email" type="email" autoComplete="email" placeholder="jane@example.com" maxLength="254" required />
               </label>
               <label>
-                Phone Number
-                <input name="phone" type="tel" autoComplete="tel" placeholder="0400 000 000" maxLength="50" required />
+                Phone Number (optional)
+                <input name="phone" type="tel" autoComplete="tel" placeholder="0400 000 000" maxLength="50" />
               </label>
               <label>
                 Matter Type

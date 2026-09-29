@@ -37,7 +37,7 @@ RESEND_API_KEY=your_resend_api_key
 VCC_FROM_EMAIL=enquiries@villageclinicalconsultancy.com.au
 ```
 
-Verify the sending domain in Resend before using `VCC_FROM_EMAIL`. The visitor's email is used as the reply-to address; visitors can submit from any email domain. The form requires a name, email, phone number, matter type, and message. `npm run dev` serves the Vite frontend only; use `vercel dev` to exercise the email function locally.
+Verify the sending domain in Resend before using `VCC_FROM_EMAIL`. The visitor's email is used as the reply-to address; visitors can submit from any email domain. The form requires a name, email, matter type, and message; phone number is optional. `npm run dev` serves the Vite frontend only; use `vercel dev` to exercise the email function locally.
 
 ## Deployment
 

@@ -1027,7 +1027,7 @@ textarea:focus-visible {
 }
 
 .contact-layout {
-  grid-template-columns: minmax(240px, 0.5fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(365px, 0.8fr) minmax(0, 1fr);
 }
 
 .pricing-panel {
@@ -1121,6 +1121,12 @@ textarea:focus-visible {
   color: var(--navy-900);
   font-weight: 900;
   overflow-wrap: anywhere;
+}
+
+@media (min-width: 981px) {
+  .contact-email {
+    white-space: nowrap;
+  }
 }
 
 .contact-note {
@@ -1230,16 +1236,18 @@ textarea:focus-visible {
 }
 
 .flowchart-section {
-  background: var(--paper);
+  background: var(--cream);
 }
 
 .flowchart-shell {
-  width: min(1480px, calc(100% - 40px));
+  width: min(1110px, calc(100% - 40px));
   margin: 0 auto;
 }
 
 .flowchart-shell h2 {
+  border-bottom: 1px solid var(--border);
   margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   font-size: clamp(2rem, 3.5vw, 3rem);
 }
 
@@ -1251,6 +1259,8 @@ textarea:focus-visible {
   display: block;
   border-radius: 8px;
   overflow: hidden;
+  isolation: isolate;
+  background: var(--cream);
 }
 
 .flowchart-figure a:focus-visible {
@@ -1263,6 +1273,7 @@ textarea:focus-visible {
   height: auto;
   border: 1px solid var(--border);
   border-radius: 8px;
+  mix-blend-mode: multiply;
 }
 
 .flowchart-figure figcaption {

@@ -24,7 +24,7 @@ function makeRequest(body) {
   return { method: "POST", headers: { "content-type": "application/json" }, body };
 }
 
-test("sends a complete enquiry from any email domain to the admin inbox", async (context) => {
+test("sends an enquiry from any email domain without a phone number", async (context) => {
   const originalFetch = global.fetch;
   const originalApiKey = process.env.RESEND_API_KEY;
   const originalSender = process.env.VCC_FROM_EMAIL;
@@ -45,12 +45,13 @@ test("sends a complete enquiry from any email domain to the admin inbox", async 
   };
 
   const response = makeResponse();
-  await handler(makeRequest(validEnquiry), response);
+  await handler(makeRequest({ ...validEnquiry, phone: "" }), response);
 
   assert.equal(response.statusCode, 200);
   assert.deepEqual(response.body, { ok: true });
   assert.deepEqual(emailPayload.to, ["admin@villageclinicalconsultancy.com.au"]);
   assert.equal(emailPayload.reply_to, "jane@anotherdomain.org");
+  assert.match(emailPayload.text, /Phone: Not provided/);
   assert.match(emailPayload.text, /Please contact me about an assessment/);
 });
 
