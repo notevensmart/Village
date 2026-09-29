@@ -13,6 +13,7 @@ const navItems = [
   { id: "team", label: "Our team" },
   { id: "services", label: "Services" },
   { id: "faq", label: "FAQ" },
+  { id: "contact", label: "Contact" },
 ];
 
 const pageTitles = {
@@ -317,6 +318,26 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="section flowchart-section" aria-labelledby="flowchart-heading">
+        <div className="flowchart-shell">
+          <h2 id="flowchart-heading">Child Impact Report process</h2>
+          <figure className="flowchart-figure">
+            <a href="/child-impact-report-flowchart.png" target="_blank" rel="noopener noreferrer" aria-label="Open the Child Impact Report flowchart at full size">
+              <img
+                src="/child-impact-report-flowchart.png"
+                alt="Child Impact Report process: need identified, family contacted, information gathered, child's views heard, report prepared and provided to the Court, then considered by the Court. The chart also explains the supportive approach and that the Court makes the final decisions."
+                width="1774"
+                height="887"
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <a href="/child-impact-report-flowchart.png" target="_blank" rel="noopener noreferrer">View full-size flowchart</a>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       <CtaBand />
     </>
   );
@@ -424,7 +445,29 @@ function FaqPage() {
 }
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [formStatus, setFormStatus] = useState("idle");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setFormStatus("sending");
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) throw new Error("Enquiry delivery failed");
+
+      form.reset();
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
+  }
 
   return (
     <>
@@ -437,12 +480,16 @@ function ContactPage() {
           <div className="contact-copy">
             <div className="contact-detail-group">
               <h2 id="contact-heading">Email</h2>
-              <a href="mailto:hello@villageclinical.com.au">hello@villageclinical.com.au</a>
+              <a href="mailto:admin@villageclinicalconsultancy.com.au">admin@villageclinicalconsultancy.com.au</a>
             </div>
             <div className="contact-detail-group">
-              <h2>Operating Hours</h2>
-              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-              <p className="contact-note">After-hours and weekend appointments available upon request.</p>
+              <h2>Mobile</h2>
+              <a href="tel:+61494823141">0494 823 141</a>
+            </div>
+            <div className="contact-detail-group">
+              <h2>Contact Hours</h2>
+              <p>Monday to Friday: 9am to 5pm</p>
+              <p className="contact-note">After-hours and weekend work available on a needs basis.</p>
             </div>
             <div className="contact-referrals">
               <h2>Referrals</h2>
@@ -453,24 +500,23 @@ function ContactPage() {
           </div>
           <form
             className="contact-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={handleSubmit}
+            onChange={() => formStatus !== "sending" && setFormStatus("idle")}
+            aria-busy={formStatus === "sending"}
           >
             <h2>Submit an Inquiry</h2>
             <div className="form-grid">
               <label>
                 Full Name
-                <input name="name" type="text" autoComplete="name" placeholder="Jane Doe" required />
+                <input name="name" type="text" autoComplete="name" placeholder="Jane Doe" maxLength="120" required />
               </label>
               <label>
                 Email Address
-                <input name="email" type="email" autoComplete="email" placeholder="jane@example.com" required />
+                <input name="email" type="email" autoComplete="email" placeholder="jane@example.com" maxLength="254" required />
               </label>
               <label>
                 Phone Number
-                <input name="phone" type="tel" autoComplete="tel" placeholder="0400 000 000" required />
+                <input name="phone" type="tel" autoComplete="tel" placeholder="0400 000 000" maxLength="50" required />
               </label>
               <label>
                 Matter Type
@@ -487,16 +533,21 @@ function ContactPage() {
               </label>
               <label className="full-span">
                 Message
-                <textarea name="message" rows="7" placeholder="Please provide brief details about your inquiry..." required />
+                <textarea name="message" rows="7" placeholder="Please provide brief details about your inquiry..." maxLength="4000" required />
               </label>
             </div>
-            <button className="button primary" type="submit">
-              Send Inquiry
+            <button className="button primary" type="submit" disabled={formStatus === "sending"}>
+              {formStatus === "sending" ? "Sending..." : "Send enquiry"}
               <ArrowRight aria-hidden="true" />
             </button>
-            {sent && (
+            {formStatus === "success" && (
               <p className="form-status" role="status">
-                Thank you. Your enquiry has been noted for this website preview.
+                Thank you. Your enquiry has been sent to Village Clinical Consultancy.
+              </p>
+            )}
+            {formStatus === "error" && (
+              <p className="form-status error" role="alert">
+                We couldn't send your enquiry. Please try again or email <a href="mailto:admin@villageclinicalconsultancy.com.au">admin@villageclinicalconsultancy.com.au</a>.
               </p>
             )}
           </form>

@@ -28,6 +28,17 @@ Preview the built site locally with:
 npm run preview
 ```
 
+## Enquiry Email
+
+The Contact form posts to the Vercel function at `/api/enquiry`, which sends the enquiry to `admin@villageclinicalconsultancy.com.au` through Resend. Set these server-side environment variables in the Vercel project:
+
+```text
+RESEND_API_KEY=your_resend_api_key
+VCC_FROM_EMAIL=enquiries@villageclinicalconsultancy.com.au
+```
+
+Verify the sending domain in Resend before using `VCC_FROM_EMAIL`. The visitor's email is used as the reply-to address; visitors can submit from any email domain. The form requires a name, email, phone number, matter type, and message. `npm run dev` serves the Vite frontend only; use `vercel dev` to exercise the email function locally.
+
 ## Deployment
 
 This project is ready for Vercel:
