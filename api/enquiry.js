@@ -1,4 +1,5 @@
 const recipient = "admin@villageclinicalconsultancy.com.au";
+const defaultSender = "enquiries@villageclinicalconsultancy.com.au";
 const matterTypes = new Set([
   "Private family report",
   "Dyadic assessment",
@@ -53,9 +54,9 @@ export default async function handler(request, response) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const sender = process.env.VCC_FROM_EMAIL?.trim();
+  const sender = process.env.VCC_FROM_EMAIL?.trim() || defaultSender;
 
-  if (!apiKey || !sender || !emailPattern.test(sender)) {
+  if (!apiKey || !emailPattern.test(sender)) {
     return response.status(503).json({ error: "Enquiry email is not configured" });
   }
 

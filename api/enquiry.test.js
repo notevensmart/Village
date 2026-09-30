@@ -37,7 +37,7 @@ test("sends an enquiry from any email domain without a phone number", async (con
   });
 
   process.env.RESEND_API_KEY = "test-key";
-  process.env.VCC_FROM_EMAIL = "enquiries@villageclinicalconsultancy.com.au";
+  delete process.env.VCC_FROM_EMAIL;
   let emailPayload;
   global.fetch = async (_url, options) => {
     emailPayload = JSON.parse(options.body);
@@ -50,6 +50,7 @@ test("sends an enquiry from any email domain without a phone number", async (con
   assert.equal(response.statusCode, 200);
   assert.deepEqual(response.body, { ok: true });
   assert.deepEqual(emailPayload.to, ["admin@villageclinicalconsultancy.com.au"]);
+  assert.equal(emailPayload.from, "Village Clinical Consultancy <enquiries@villageclinicalconsultancy.com.au>");
   assert.equal(emailPayload.reply_to, "jane@anotherdomain.org");
   assert.match(emailPayload.text, /Phone: Not provided/);
   assert.match(emailPayload.text, /Please contact me about an assessment/);
